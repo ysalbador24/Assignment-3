@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import com.example.haunted.engine.CombatEngine;
 import com.example.haunted.events.CombatResult;
@@ -22,24 +24,22 @@ class MonsterCombatTest {
 	
 	private Player player;
 	private Monster monster;
+	private BossMonster boss;
 	private CombatEngine combatEngine;
+	private DamageCalculator damageCalculator;
 	private Quest quest;
 
 	@BeforeEach
 	void setUp() {
 		player = new Player("Bob", 100, 10, 5, new Inventory(10));
+		
 		monster = new Monster("Zombie", 50, 10, 5, new ArrayList<>());
-		combatEngine = new CombatEngine(new DamageCalculator(), new QuestTracker());
-		quest = new Quest("Main Quest", "Recover the Lost Gradebook and defeat the Final Exam Phantom.");
-	}
-
-	// Damage calculation
-	@Test
-	void playerAttackDamagesMonsterCorrectly() {
-		combatEngine.attack(player, null, monster); // player attacks monster with 10 attack power
-
-		assertEquals(45, monster.getHealth()); // 10 attack - 5 defense = 45 health
-		assertEquals(95, player.getHealth()); // counterattack with 5 damage, 10 attack - 5 defense
+		
+		boss = new BossMonster("Final Exam Phantom", 100, 10, 5, new ArrayList<>(), 3);
+		
+		damageCalculator = new DamageCalculator();
+		
+		combatEngine = new CombatEngine(damageCalculator, new QuestTracker());
 	}
 
 	// Excessive damage
@@ -48,53 +48,59 @@ class MonsterCombatTest {
 		monster.takeDamage(100);
 
 		assertEquals(0, monster.getHealth()); // monster health should be 0
+		assertFalse(monster.isAlive()); // monster dead
+	}
+	
+	@Test
+	void monsterDamageCannotBeNegative() {
+		monster.takeDamage(-10);
+		
+		assertEquals(50, monster.getHealth());
 	}
 
 	// Normal boss behavior
 	@Test
+	
 	void bossUsesNormalAttackAboveHalfHealth() {
-		BossMonster bossMonster = new BossMonster("Final Exam Phantom", 100, 20, 10, new ArrayList<>(), 3);
+		combatEngine.attack(player, null, boss);
 
-		combatEngine.attack(player, quest, bossMonster);
-
-		assertEquals(99, bossMonster.getHealth()); // bossMonster has taken the minimum of 1 damage
-		assertEquals(85, player.getHealth()); // player gets counterattacked with 15 damage
+		assertEquals(95, boss.getHealth()); 
+		assertEquals(95, player.getHealth()); // player gets counterattacked with 5 damage, 10 normal attack - 5 defense
 	}
 
 	// Special attack threshold
-	@Test
-	void bossBecomesEnragedAtHalfHealth() {
-		BossMonster bossMonster = new BossMonster("Final Exam Phantom", 100, 20, 10, new ArrayList<>(), 3);
+	@ParameterizedTest
+	@CsvSource({
+		"51, 13",
+		"50, 13",
+		"0, 10" // 0 damage, no bonus
+	})
+	void bossBecomesEnragedAtHalfHealth(int healthDamage, int expectedAttack) {
+		boss.takeDamage(healthDamage);
 		
-		bossMonster.takeDamage(50);
-		
-		assertEquals(23, bossMonster.getCurrentAttack()); // attack 20 + 3 bonus = 23 
+		assertEquals(expectedAttack, boss.getCurrentAttack()); // attack + 3 bonus
 	}
 
 	// Integration with damage calculator
 	@Test
 	void bossDealsIncreasedDamageWhenEnraged() {
-		BossMonster bossMonster = new BossMonster("Final Exam Phantom", 100, 20, 10, new ArrayList<>(), 3);
+		boss.takeDamage(50); // boss starts at 100 health
 		
-		bossMonster.takeDamage(50);
+		int damage = damageCalculator.calculateMonsterDamage(boss, player);
 		
-		CombatResult result = combatEngine.attack(player, quest, bossMonster);
-		
-		assertEquals(18 ,result.getDamageToPlayer()); // player should take 18 damage
-		assertEquals(82, player.getHealth());
-		assertEquals(49, bossMonster.getHealth()); // player deals minimum of 1 damage with 10 attack power and monsters 10 defense
+		assertEquals(8, damage);
 	}
+	
 	// Boss defeat and quest progression
 	@Test
 	void defeatingFinalBossUpdatesQuest() {
+        quest = new Quest("Main Quest", "Recover the Lost Gradebook and defeat the Final Exam Phantom.");
+        
+        boss.takeDamage(99);
 
-        BossMonster bossMonster = new BossMonster("Final Exam Phantom", 100, 10, 5, new ArrayList<>(), 3);
+        combatEngine.attack(player, quest, boss);
 
-        bossMonster.takeDamage(99);
-
-        combatEngine.attack(player, quest, bossMonster);
-
-        assertFalse(bossMonster.isAlive());
+        assertFalse(boss.isAlive());
         assertTrue(quest.isPhantomDefeated());
         assertEquals(QuestStatus.IN_PROGRESS, quest.getStatus());
     }

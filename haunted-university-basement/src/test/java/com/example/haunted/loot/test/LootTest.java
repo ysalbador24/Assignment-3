@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,14 +42,25 @@ class LootTest {
 	private InteractionEngine interactionEngine;
 	private Quest quest;
 	private Room room;
+	private Potion potion;
 
 	@BeforeEach
 	void setUp() {
+		potion = new  Potion("Health Potion", "Restores health.", 20);
+		
+		List<Item> loot = new ArrayList<>();
+		loot.add(potion);
+		
 		player = new Player("Bob", 100, 10, 5, new Inventory(2));
-		monster = new Monster("Zombie", 50, 10, 5, new ArrayList<>());
+		
+		monster = new Monster("Zombie", 5, 10, 5, loot);
+		
 		combatEngine = new CombatEngine(new DamageCalculator(), new QuestTracker());
+		
 		interactionEngine = new InteractionEngine(new QuestTracker());
+		
 		quest = new Quest("Main Quest", "Defeat the Final Exam Phantom and recover the Lost Gradebook.");
+		
 		room = new Room("R1", "Basement", "A dark basement.");
 		player.setCurrentRoom(room);
 	}
@@ -56,19 +68,11 @@ class LootTest {
 	// Monster loot is transferred into the room when defeated
     @Test
     void defeatedMonsterDropsLootIntoRoom() {
-        Item loot = new Potion("Health Potion", "Restores health.", 20);
-
-        ArrayList<Item> monsterLoot = new ArrayList<>();
-        monsterLoot.add(loot);
-
-        // Player deals 5 damage, so monster starts with 5 health.
-        monster = new Monster("Zombie", 5, 10, 5, monsterLoot);
-
-        CombatResult result = combatEngine.attack(player, quest, monster);
+        CombatResult result = combatEngine.attack(player, quest, monster); // monster health starts at 5
 
         assertTrue(result.isMonsterDefeated());
         assertTrue(room.findItem("Health Potion").isPresent());
-        assertTrue(result.getDroppedItems().contains(loot));
+        assertEquals(1, result.getDroppedItems().size());
     }
 
     // Player can collect an item from the room

@@ -20,11 +20,17 @@ class PlayerHealthTest {
 		player = new Player("Bob", 100, 10, 5, new Inventory(10));
 	}
 	
-	@Test
-    void playerTakesDamage() {
-        player.takeDamage(10);
+	@ParameterizedTest
+	@CsvSource({
+		"1, 99",
+		"25, 75",
+		"100, 0",
+		"150, 0"
+	})
+    void playerTakesDamage(int damage, int expectedHealth) {
+        player.takeDamage(damage);
 
-        assertEquals(90, player.getHealth()); // player takes 10 dmg, 90 health
+        assertEquals(expectedHealth, player.getHealth()); // player takes damage should equal expectedHealth
     }
 
     @Test
@@ -35,13 +41,18 @@ class PlayerHealthTest {
         assertFalse(player.isAlive()); // player should be dead
     }
 
-    @Test
-    void playerCanHealWithoutExceedingMaximum() {
+    @ParameterizedTest
+    @CsvSource({
+    	"10, 70",
+    	"40, 100",
+    	"80, 100"
+    })
+    void playerCanHealWithoutExceedingMaximum(int healing, int expectedHealth) {
         player.takeDamage(40);
 
-        player.heal(100);
+        player.heal(healing); // heals for 10, 40, 80
 
-        assertEquals(100, player.getHealth());
+        assertEquals(expectedHealth, player.getHealth());
     }
 
     @Test
