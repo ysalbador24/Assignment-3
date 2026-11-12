@@ -10,7 +10,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import com.example.haunted.engine.CombatEngine;
-import com.example.haunted.events.CombatResult;
 import com.example.haunted.model.BossMonster;
 import com.example.haunted.model.Inventory;
 import com.example.haunted.model.Monster;
@@ -31,6 +30,7 @@ class MonsterCombatTest {
 
 	@BeforeEach
 	void setUp() {
+		
 		player = new Player("Bob", 100, 10, 5, new Inventory(10));
 		
 		monster = new Monster("Zombie", 50, 10, 5, new ArrayList<>());
@@ -40,6 +40,7 @@ class MonsterCombatTest {
 		damageCalculator = new DamageCalculator();
 		
 		combatEngine = new CombatEngine(damageCalculator, new QuestTracker());
+		
 	}
 
 	// Excessive damage
@@ -71,8 +72,9 @@ class MonsterCombatTest {
 	// Special attack threshold
 	@ParameterizedTest
 	@CsvSource({
-		"51, 13",
-		"50, 13",
+		"51, 13", // 49 health, bonus
+		"50, 13", // 50 health exactly, bonus
+		"49, 10", // 51 health, no bonus
 		"0, 10" // 0 damage, no bonus
 	})
 	void bossBecomesEnragedAtHalfHealth(int healthDamage, int expectedAttack) {
@@ -104,4 +106,17 @@ class MonsterCombatTest {
         assertTrue(quest.isPhantomDefeated());
         assertEquals(QuestStatus.IN_PROGRESS, quest.getStatus());
     }
+	
+	@Test
+	void defeatingOrdinaryMonsterDoesNotUpdateFinalBossQuest() {
+		quest = new Quest("Main Quest", "Recover the Lost Gradebook and defeat the Final Exam Phantom.");
+		
+		monster.takeDamage(49);
+		
+		combatEngine.attack(player, quest, monster);
+		
+		assertFalse(monster.isAlive());
+		assertFalse(quest.isPhantomDefeated());
+		assertEquals(QuestStatus.NOT_STARTED, quest.getStatus());
+	}
 }
