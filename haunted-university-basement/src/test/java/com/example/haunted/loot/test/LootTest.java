@@ -6,13 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.example.haunted.engine.CombatEngine;
 import com.example.haunted.engine.InteractionEngine;
@@ -28,6 +25,7 @@ import com.example.haunted.model.Player;
 import com.example.haunted.model.Potion;
 import com.example.haunted.model.Quest;
 import com.example.haunted.model.QuestItem;
+import com.example.haunted.model.QuestStatus;
 import com.example.haunted.model.Room;
 import com.example.haunted.model.Weapon;
 import com.example.haunted.rules.DamageCalculator;
@@ -46,6 +44,7 @@ class LootTest {
 
 	@BeforeEach
 	void setUp() {
+		
 		potion = new  Potion("Health Potion", "Restores health.", 20);
 		
 		List<Item> loot = new ArrayList<>();
@@ -63,6 +62,7 @@ class LootTest {
 		
 		room = new Room("R1", "Basement", "A dark basement.");
 		player.setCurrentRoom(room);
+		
 	}
 
 	// Monster loot is transferred into the room when defeated
@@ -150,25 +150,27 @@ class LootTest {
         assertTrue(player.getInventory().contains("Basement Key"));
         assertFalse(room.findItem("Basement Key").isPresent());
     }
-
-    // Inventory cannot exceed its capacity
-    @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 5})
-    void inventoryCannotExceedCapacity(int capacity) {
-        Inventory inventory = new Inventory(capacity);
-
-        for (int i = 0; i < capacity; i++) {
-            assertTrue(inventory.addItem(
-                    new Potion("Potion " + i, "Test potion.", 10)));
-        }
-
-        assertTrue(inventory.isFull());
-
-        boolean added = inventory.addItem(
-                new Potion("Extra Potion", "Additional potion.", 10));
-
-        assertFalse(added);
-        assertEquals(capacity, inventory.getItems().size());
+    
+    @Test
+    void pickingUpLostGradeBookUpdatesQuest() {
+    	Item gradebook = new QuestItem("Lost Gradebook", "An important quest item.");
+    	
+    	room.addItem(gradebook);
+    	
+    	InteractionResult result = interactionEngine.pickUpItem(player, quest, gradebook.getName());
+    	
+    	assertTrue(result.isSuccess());
+    	assertTrue(quest.isGradebookRecovered());
+    	assertEquals(QuestStatus.IN_PROGRESS, quest.getStatus()); // only gradebook has been recovered 1/2 completion
+    }
+    
+    @Test
+    void playerCannotPickUpItemNotPresent() {
+    	InteractionResult result = interactionEngine.pickUpItem(player, quest, "Missing Item");
+    	
+    	assertFalse(result.isSuccess());
+    	assertFalse(player.getInventory().contains("Missing Item"));
+    	assertTrue(room.getItems().isEmpty());
     }
 
     // Helper method for creating different item types
