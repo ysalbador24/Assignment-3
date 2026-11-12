@@ -9,7 +9,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import com.example.haunted.model.Inventory;
 import com.example.haunted.model.Player;
-import com.example.haunted.model.Potion;
+import com.example.haunted.model.Weapon;
+import com.example.haunted.model.Armor;
 
 class PlayerHealthTest {
 
@@ -81,17 +82,26 @@ class PlayerHealthTest {
     	assertEquals(100, player.getHealth());
     }
     
-    // Potion healing
     @Test
-    void potionRestoresPlayerHealth() {
-    	Potion potion = new Potion("Healing Potion", "A healing potion.", 10);
+    void equippingWeaponIncreasesAttackPower() {
+    	Weapon weapon = new Weapon("Sword", "A sharp sword.", 15);
     	
-    	player.takeDamage(30);
+    	assertEquals(10, player.getAttackPower());
     	
-    	potion.use(player); // heals 10 health
+    	player.equipWeapon(weapon);
     	
-    	assertEquals(80, player.getHealth());
+    	assertEquals(25, player.getAttackPower());
     }
-
+    
+    @Test
+    void equippingArmorIncreasesDefensePower() {
+    	Armor armor = new Armor("Shield", "A sturdy shield.", 10);
+    	
+    	assertEquals(5, player.getDefensePower());
+    	
+    	player.equipArmor(armor);
+    	
+    	assertEquals(15, player.getDefensePower());
+    }
 
 }
