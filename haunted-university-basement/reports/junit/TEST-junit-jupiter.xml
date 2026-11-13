@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Jupiter" tests="138" skipped="0" failures="0" errors="0" time="0.277" hostname="53deeef2eb0b" timestamp="2026-11-12T20:08:14">
+<properties>
+<property name="file.encoding" value="UTF-8"/>
+<property name="file.separator" value="/"/>
+<property name="java.class.path" value="tools/junit-platform-console-standalone-1.11.4.jar"/>
+<property name="java.class.version" value="65.0"/>
+<property name="java.home" value="/usr/lib/jvm/java-21-openjdk-amd64"/>
+<property name="java.io.tmpdir" value="/tmp"/>
+<property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+<property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+<property name="java.runtime.version" value="21.0.13+9-1-deb13u2-Debian"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="21"/>
+<property name="java.vendor" value="Debian"/>
+<property name="java.vendor.url" value="https://tracker.debian.org/openjdk-21"/>
+<property name="java.vendor.url.bug" value="https://bugs.debian.org/openjdk-21"/>
+<property name="java.version" value="21.0.13"/>
+<property name="java.version.date" value="2026-10-20"/>
+<property name="java.vm.compressedOopsMode" value="Zero based"/>
+<property name="java.vm.info" value="mixed mode, sharing"/>
+<property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="21"/>
+<property name="java.vm.vendor" value="Debian"/>
+<property name="java.vm.version" value="21.0.13+9-1-deb13u2-Debian"/>
+<property name="jdk.debug" value="release"/>
+<property name="junit.docs.version" value="1.11.4"/>
+<property name="line.separator" value="&#10;"/>
+<property name="native.encoding" value="UTF-8"/>
+<property name="os.arch" value="amd64"/>
+<property name="os.name" value="Linux"/>
+<property name="os.version" value="6.18.57"/>
+<property name="path.separator" value=":"/>
+<property name="stderr.encoding" value="UTF-8"/>
+<property name="stdout.encoding" value="UTF-8"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+<property name="sun.java.command" value="tools/junit-platform-console-standalone-1.11.4.jar execute --class-path work/haunted-university-basement/target/classes:work/haunted-university-basement/target/test-classes --scan-class-path --reports-dir work/junit-reports --details=summary"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="UTF-8"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="user.dir" value="/workspace/scratch/83cf9c0730e8"/>
+<property name="user.home" value="/home/agent"/>
+<property name="user.language" value="en"/>
+<property name="user.name" value="agent"/>
+<property name="user.timezone" value="America/Chicago"/>
+</properties>
+<testcase name="shouldApplyDamageAtHealthBoundaries(int, int)[5]" classname="com.example.haunted.rules.TrapResolverTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.TrapResolverTest]/[test-template:shouldApplyDamageAtHealthBoundaries(int, int)]/[test-template-invocation:#5]
+display-name: [5] 20, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldApplyDamageAtHealthBoundaries(int, int)[6]" classname="com.example.haunted.rules.TrapResolverTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.TrapResolverTest]/[test-template:shouldApplyDamageAtHealthBoundaries(int, int)]/[test-template-invocation:#6]
+display-name: [6] 21, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyAttackMonsterInCurrentRoomAndApplyReturnedDamage()" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldOnlyAttackMonsterInCurrentRoomAndApplyReturnedDamage()]
+display-name: shouldOnlyAttackMonsterInCurrentRoomAndApplyReturnedDamage()
+]]></system-out>
+</testcase>
+<testcase name="shouldCreateExpectedStartingPlayerAndQuest()" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldCreateExpectedStartingPlayerAndQuest()]
+display-name: shouldCreateExpectedStartingPlayerAndQuest()
+]]></system-out>
+</testcase>
+<testcase name="shouldApplyDamageAtHealthBoundaries(int, int)[1]" classname="com.example.haunted.rules.TrapResolverTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.TrapResolverTest]/[test-template:shouldApplyDamageAtHealthBoundaries(int, int)]/[test-template-invocation:#1]
+display-name: [1] -1, 20
+]]></system-out>
+</testcase>
+<testcase name="shouldApplyDamageAtHealthBoundaries(int, int)[2]" classname="com.example.haunted.rules.TrapResolverTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.TrapResolverTest]/[test-template:shouldApplyDamageAtHealthBoundaries(int, int)]/[test-template-invocation:#2]
+display-name: [2] 0, 20
+]]></system-out>
+</testcase>
+<testcase name="shouldApplyDamageAtHealthBoundaries(int, int)[3]" classname="com.example.haunted.rules.TrapResolverTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.TrapResolverTest]/[test-template:shouldApplyDamageAtHealthBoundaries(int, int)]/[test-template-invocation:#3]
+display-name: [3] 1, 19
+]]></system-out>
+</testcase>
+<testcase name="shouldAcceptAlreadyUnlockedRoomWithoutKey()" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldAcceptAlreadyUnlockedRoomWithoutKey()]
+display-name: shouldAcceptAlreadyUnlockedRoomWithoutKey()
+]]></system-out>
+</testcase>
+<testcase name="shouldApplyDamageAtHealthBoundaries(int, int)[4]" classname="com.example.haunted.rules.TrapResolverTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.TrapResolverTest]/[test-template:shouldApplyDamageAtHealthBoundaries(int, int)]/[test-template-invocation:#4]
+display-name: [4] 19, 1
+]]></system-out>
+</testcase>
+<testcase name="shouldEquipAndReplaceArmorWithoutConsumingIt()" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldEquipAndReplaceArmorWithoutConsumingIt()]
+display-name: shouldEquipAndReplaceArmorWithoutConsumingIt()
+]]></system-out>
+</testcase>
+<testcase name="shouldExposeUnmodifiableCollections()" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[method:shouldExposeUnmodifiableCollections()]
+display-name: shouldExposeUnmodifiableCollections()
+]]></system-out>
+</testcase>
+<testcase name="shouldCompleteQuestThroughTrackerInEitherOrder(boolean)[2]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldCompleteQuestThroughTrackerInEitherOrder(boolean)]/[test-template-invocation:#2]
+display-name: [2] false
+]]></system-out>
+</testcase>
+<testcase name="shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean)[2]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean)]/[test-template-invocation:#2]
+display-name: [2] false
+]]></system-out>
+</testcase>
+<testcase name="shouldCompleteQuestThroughTrackerInEitherOrder(boolean)[1]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldCompleteQuestThroughTrackerInEitherOrder(boolean)]/[test-template-invocation:#1]
+display-name: [1] true
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectNullNameAndDescription()" classname="com.example.haunted.model.QuestTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.QuestTest]/[method:shouldRejectNullNameAndDescription()]
+display-name: shouldRejectNullNameAndDescription()
+]]></system-out>
+</testcase>
+<testcase name="shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean)[1]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean)]/[test-template-invocation:#1]
+display-name: [1] true
+]]></system-out>
+</testcase>
+<testcase name="shouldStoreReplaceAndClearTrap()" classname="com.example.haunted.model.RoomTest" time="0.019">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[method:shouldStoreReplaceAndClearTrap()]
+display-name: shouldStoreReplaceAndClearTrap()
+]]></system-out>
+</testcase>
+<testcase name="shouldKeepPropertiesAndDisarm(TrapType, int, boolean, boolean)[1]" classname="com.example.haunted.model.TrapTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.TrapTest]/[test-template:shouldKeepPropertiesAndDisarm(com.example.haunted.model.TrapType, int, boolean, boolean)]/[test-template-invocation:#1]
+display-name: [1] ELECTRIC, 8, true, true
+]]></system-out>
+</testcase>
+<testcase name="shouldKeepPropertiesAndDisarm(TrapType, int, boolean, boolean)[2]" classname="com.example.haunted.model.TrapTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.TrapTest]/[test-template:shouldKeepPropertiesAndDisarm(com.example.haunted.model.TrapType, int, boolean, boolean)]/[test-template-invocation:#2]
+display-name: [2] STEAM, 0, false, false
+]]></system-out>
+</testcase>
+<testcase name="shouldKeepPropertiesAndDisarm(TrapType, int, boolean, boolean)[3]" classname="com.example.haunted.model.TrapTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.TrapTest]/[test-template:shouldKeepPropertiesAndDisarm(com.example.haunted.model.TrapType, int, boolean, boolean)]/[test-template-invocation:#3]
+display-name: [3] STEAM, 3, true, false
+]]></system-out>
+</testcase>
+<testcase name="shouldKeepPropertiesAndDisarm(TrapType, int, boolean, boolean)[4]" classname="com.example.haunted.model.TrapTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.TrapTest]/[test-template:shouldKeepPropertiesAndDisarm(com.example.haunted.model.TrapType, int, boolean, boolean)]/[test-template-invocation:#4]
+display-name: [4] ELECTRIC, 5, false, true
+]]></system-out>
+</testcase>
+<testcase name="shouldUnlockWithMatchingName(String)[2]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldUnlockWithMatchingName(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] archive key
+]]></system-out>
+</testcase>
+<testcase name="shouldUnlockWithMatchingName(String)[3]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldUnlockWithMatchingName(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] ARCHIVE KEY
+]]></system-out>
+</testcase>
+<testcase name="shouldUnlockWithMatchingName(String)[1]" classname="com.example.haunted.model.RoomTest" time="0.005">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldUnlockWithMatchingName(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] Archive Key
+]]></system-out>
+</testcase>
+<testcase name="shouldWinThroughPickupAndCombatInEitherOrder(boolean)[2]" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#2]
+display-name: [2] false
+]]></system-out>
+</testcase>
+<testcase name="shouldWinThroughPickupAndCombatInEitherOrder(boolean)[1]" classname="com.example.haunted.engine.GameEngineTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#1]
+display-name: [1] true
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceArmedOneTimeElectricTrapInElevator()" classname="com.example.haunted.config.DungeonFactoryTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldPlaceArmedOneTimeElectricTrapInElevator()]
+display-name: shouldPlaceArmedOneTimeElectricTrapInElevator()
+]]></system-out>
+</testcase>
+<testcase name="shouldBuildAllEightRoomsWithExpectedContents(String, String, String, int, int, int, boolean, String)[8]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldBuildAllEightRoomsWithExpectedContents(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String)]/[test-template-invocation:#8]
+display-name: [8] finalChamber, Final Chamber, A spectral exam hall where the boss waits., 1, 0, 1, true, Vault Key
+]]></system-out>
+</testcase>
+<testcase name="shouldCreateIndependentGames()" classname="com.example.haunted.config.DungeonFactoryTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldCreateIndependentGames()]
+display-name: shouldCreateIndependentGames()
+]]></system-out>
+</testcase>
+<testcase name="shouldHandleWrongMissingAndUnnecessaryKey()" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[method:shouldHandleWrongMissingAndUnnecessaryKey()]
+display-name: shouldHandleWrongMissingAndUnnecessaryKey()
+]]></system-out>
+</testcase>
+<testcase name="shouldBuildAllEightRoomsWithExpectedContents(String, String, String, int, int, int, boolean, String)[2]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldBuildAllEightRoomsWithExpectedContents(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] lectureHall, Abandoned Lecture Hall, Dusty desks and a broken projector., 4, 1, 1, false, null
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[3]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] lectureHall, EAST, labStorage
+]]></system-out>
+</testcase>
+<testcase name="shouldBuildAllEightRoomsWithExpectedContents(String, String, String, int, int, int, boolean, String)[3]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldBuildAllEightRoomsWithExpectedContents(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] labStorage, Lab Storage, Shelves of outdated hardware and chemicals., 2, 2, 0, false, null
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[2]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] lectureHall, WEST, stairwell
+]]></system-out>
+</testcase>
+<testcase name="shouldFindAndRemoveItemIgnoringCase(String)[3]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldFindAndRemoveItemIgnoringCase(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] ARCHIVE KEY
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[1]" classname="com.example.haunted.config.DungeonFactoryTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] stairwell, EAST, lectureHall
+]]></system-out>
+</testcase>
+<testcase name="shouldPrintStartingRoomMovementAndPickup()" classname="com.example.haunted.MainTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.MainTest]/[method:shouldPrintStartingRoomMovementAndPickup()]
+display-name: shouldPrintStartingRoomMovementAndPickup()
+]]></system-out>
+</testcase>
+<testcase name="shouldMoveThroughEachConnectedExit(Direction)[4]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#4]
+display-name: [4] WEST
+]]></system-out>
+</testcase>
+<testcase name="shouldFindAndRemoveItemIgnoringCase(String)[2]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldFindAndRemoveItemIgnoringCase(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] archive key
+]]></system-out>
+</testcase>
+<testcase name="shouldBuildAllEightRoomsWithExpectedContents(String, String, String, int, int, int, boolean, String)[1]" classname="com.example.haunted.config.DungeonFactoryTest" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldBuildAllEightRoomsWithExpectedContents(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] stairwell, Maintenance Stairwell, The flickering stairwell leading into the basement., 1, 0, 0, false, null
+]]></system-out>
+</testcase>
+<testcase name="shouldFindAndRemoveItemIgnoringCase(String)[1]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldFindAndRemoveItemIgnoringCase(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] Archive Key
+]]></system-out>
+</testcase>
+<testcase name="shouldBuildAllEightRoomsWithExpectedContents(String, String, String, int, int, int, boolean, String)[6]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldBuildAllEightRoomsWithExpectedContents(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String)]/[test-template-invocation:#6]
+display-name: [6] examArchive, Exam Archive, Cabinets of old exams and paperwork., 2, 1, 1, true, Archive Key
+]]></system-out>
+</testcase>
+<testcase name="shouldMoveThroughEachConnectedExit(Direction)[2]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#2]
+display-name: [2] SOUTH
+]]></system-out>
+</testcase>
+<testcase name="shouldBuildAllEightRoomsWithExpectedContents(String, String, String, int, int, int, boolean, String)[7]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldBuildAllEightRoomsWithExpectedContents(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String)]/[test-template-invocation:#7]
+display-name: [7] deanVault, Dean Vault, A hidden chamber guarded by university secrets., 3, 1, 1, false, null
+]]></system-out>
+</testcase>
+<testcase name="shouldMoveThroughEachConnectedExit(Direction)[3]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#3]
+display-name: [3] EAST
+]]></system-out>
+</testcase>
+<testcase name="shouldBuildAllEightRoomsWithExpectedContents(String, String, String, int, int, int, boolean, String)[4]" classname="com.example.haunted.config.DungeonFactoryTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldBuildAllEightRoomsWithExpectedContents(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] brokenElevator, Broken Elevator, The elevator doors hang over a dark shaft., 1, 0, 0, false, null
+]]></system-out>
+</testcase>
+<testcase name="shouldBuildAllEightRoomsWithExpectedContents(String, String, String, int, int, int, boolean, String)[5]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldBuildAllEightRoomsWithExpectedContents(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] serverCloset, Server Closet, A warm humming room full of blinking servers., 2, 1, 1, false, null
+]]></system-out>
+</testcase>
+<testcase name="shouldMoveThroughEachConnectedExit(Direction)[1]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#1]
+display-name: [1] NORTH
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordItemsWithGradebookName(Item, boolean)[1]" classname="com.example.haunted.rules.QuestTrackerTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordItemsWithGradebookName(com.example.haunted.model.Item, boolean)]/[test-template-invocation:#1]
+display-name: [1] null, false
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordDefeatedPhantom(String, int, boolean)[7]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordDefeatedPhantom(java.lang.String, int, boolean)]/[test-template-invocation:#7]
+display-name: [7] Other Ghost, 1, false
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordDefeatedPhantom(String, int, boolean)[6]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordDefeatedPhantom(java.lang.String, int, boolean)]/[test-template-invocation:#6]
+display-name: [6] Other Ghost, 0, false
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordDefeatedPhantom(String, int, boolean)[5]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordDefeatedPhantom(java.lang.String, int, boolean)]/[test-template-invocation:#5]
+display-name: [5] FINAL EXAM PHANTOM, 0, true
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordDefeatedPhantom(String, int, boolean)[4]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordDefeatedPhantom(java.lang.String, int, boolean)]/[test-template-invocation:#4]
+display-name: [4] final exam phantom, 0, true
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordDefeatedPhantom(String, int, boolean)[3]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordDefeatedPhantom(java.lang.String, int, boolean)]/[test-template-invocation:#3]
+display-name: [3] Final Exam Phantom, 0, true
+]]></system-out>
+</testcase>
+<testcase name="shouldKeepRepeatingTrapArmedAndApplyDamageEachTime()" classname="com.example.haunted.rules.TrapResolverTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.TrapResolverTest]/[method:shouldKeepRepeatingTrapArmedAndApplyDamageEachTime()]
+display-name: shouldKeepRepeatingTrapArmedAndApplyDamageEachTime()
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordDefeatedPhantom(String, int, boolean)[2]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordDefeatedPhantom(java.lang.String, int, boolean)]/[test-template-invocation:#2]
+display-name: [2] Final Exam Phantom, 1, false
+]]></system-out>
+</testcase>
+<testcase name="shouldExposeActualPlayerQuestAndCurrentRoom()" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldExposeActualPlayerQuestAndCurrentRoom()]
+display-name: shouldExposeActualPlayerQuestAndCurrentRoom()
+]]></system-out>
+</testcase>
+<testcase name="shouldCompleteObjectivesInEitherOrder(boolean)[1]" classname="com.example.haunted.model.QuestTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.QuestTest]/[test-template:shouldCompleteObjectivesInEitherOrder(boolean)]/[test-template-invocation:#1]
+display-name: [1] true
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordDefeatedPhantom(String, int, boolean)[1]" classname="com.example.haunted.rules.QuestTrackerTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordDefeatedPhantom(java.lang.String, int, boolean)]/[test-template-invocation:#1]
+display-name: [1] null, 0, false
+]]></system-out>
+</testcase>
+<testcase name="shouldCompleteObjectivesInEitherOrder(boolean)[2]" classname="com.example.haunted.model.QuestTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.QuestTest]/[test-template:shouldCompleteObjectivesInEitherOrder(boolean)]/[test-template-invocation:#2]
+display-name: [2] false
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordItemsWithGradebookName(Item, boolean)[4]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordItemsWithGradebookName(com.example.haunted.model.Item, boolean)]/[test-template-invocation:#4]
+display-name: [4] LOST GRADEBOOK, true
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordItemsWithGradebookName(Item, boolean)[5]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordItemsWithGradebookName(com.example.haunted.model.Item, boolean)]/[test-template-invocation:#5]
+display-name: [5] Other Book, false
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordItemsWithGradebookName(Item, boolean)[2]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordItemsWithGradebookName(com.example.haunted.model.Item, boolean)]/[test-template-invocation:#2]
+display-name: [2] Lost Gradebook, true
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyRecordItemsWithGradebookName(Item, boolean)[3]" classname="com.example.haunted.rules.QuestTrackerTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.QuestTrackerTest]/[test-template:shouldOnlyRecordItemsWithGradebookName(com.example.haunted.model.Item, boolean)]/[test-template-invocation:#3]
+display-name: [3] lost gradebook, true
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[16]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#16]
+display-name: [16] finalChamber, SOUTH, deanVault
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[15]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#15]
+display-name: [15] deanVault, NORTH, finalChamber
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[14]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#14]
+display-name: [14] deanVault, SOUTH, serverCloset
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[13]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#13]
+display-name: [13] deanVault, WEST, examArchive
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[12]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#12]
+display-name: [12] examArchive, EAST, deanVault
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[11]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#11]
+display-name: [11] examArchive, SOUTH, lectureHall
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[10]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#10]
+display-name: [10] serverCloset, EAST, deanVault
+]]></system-out>
+</testcase>
+<testcase name="shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(String)[1]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#1]
+display-name: [1] Archive Key
+]]></system-out>
+</testcase>
+<testcase name="shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(String)[2]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#2]
+display-name: [2] archive key
+]]></system-out>
+</testcase>
+<testcase name="shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(String)[3]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#3]
+display-name: [3] ARCHIVE KEY
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectLockedRoomWithoutRequiredKeyName()" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldRejectLockedRoomWithoutRequiredKeyName()]
+display-name: shouldRejectLockedRoomWithoutRequiredKeyName()
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectMissingExitWithoutMoving()" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldRejectMissingExitWithoutMoving()]
+display-name: shouldRejectMissingExitWithoutMoving()
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectMissingEquipment()" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldRejectMissingEquipment()]
+display-name: shouldRejectMissingEquipment()
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[9]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#9]
+display-name: [9] serverCloset, SOUTH, labStorage
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[8]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#8]
+display-name: [8] brokenElevator, NORTH, lectureHall
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[7]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#7]
+display-name: [7] labStorage, NORTH, serverCloset
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[6]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#6]
+display-name: [6] labStorage, WEST, lectureHall
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[5]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#5]
+display-name: [5] lectureHall, NORTH, examArchive
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectEveryExpectedExit(String, Direction, String)[4]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldConnectEveryExpectedExit(java.lang.String, com.example.haunted.model.Direction, java.lang.String)]/[test-template-invocation:#4]
+display-name: [4] lectureHall, SOUTH, brokenElevator
+]]></system-out>
+</testcase>
+<testcase name="shouldNotMoveOrTriggerTrapInLockedRoom()" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[method:shouldNotMoveOrTriggerTrapInLockedRoom()]
+display-name: shouldNotMoveOrTriggerTrapInLockedRoom()
+]]></system-out>
+</testcase>
+<testcase name="shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)[4]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#4]
+display-name: [4] 25, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)[3]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#3]
+display-name: [3] 20, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldMoveWithoutTriggeringDisarmedTrap()" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[method:shouldMoveWithoutTriggeringDisarmedTrap()]
+display-name: shouldMoveWithoutTriggeringDisarmedTrap()
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectUnequippableItemsAndPreserveEquipment(Item)[1]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#1]
+display-name: [1] Key
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectUnequippableItemsAndPreserveEquipment(Item)[2]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#2]
+display-name: [2] Potion
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectAndReplaceExitInEachDirection(Direction)[2]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldConnectAndReplaceExitInEachDirection(com.example.haunted.model.Direction)]/[test-template-invocation:#2]
+display-name: [2] SOUTH
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectAndReplaceExitInEachDirection(Direction)[1]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldConnectAndReplaceExitInEachDirection(com.example.haunted.model.Direction)]/[test-template-invocation:#1]
+display-name: [1] NORTH
+]]></system-out>
+</testcase>
+<testcase name="shouldEquipAndReplaceWeaponWithoutConsumingIt()" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldEquipAndReplaceWeaponWithoutConsumingIt()]
+display-name: shouldEquipAndReplaceWeaponWithoutConsumingIt()
+]]></system-out>
+</testcase>
+<testcase name="shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()]
+display-name: shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectAndReplaceExitInEachDirection(Direction)[4]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldConnectAndReplaceExitInEachDirection(com.example.haunted.model.Direction)]/[test-template-invocation:#4]
+display-name: [4] WEST
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectMissingWrongAndNonKeyItems(Item)[3]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#3]
+display-name: [3] Archive Key
+]]></system-out>
+</testcase>
+<testcase name="shouldConnectAndReplaceExitInEachDirection(Direction)[3]" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[test-template:shouldConnectAndReplaceExitInEachDirection(com.example.haunted.model.Direction)]/[test-template-invocation:#3]
+display-name: [3] EAST
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectMissingWrongAndNonKeyItems(Item)[4]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#4]
+display-name: [4] Archive Key
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectUnequippableItemsAndPreserveEquipment(Item)[3]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#3]
+display-name: [3] Book
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectMissingWrongAndNonKeyItems(Item)[1]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#1]
+display-name: [1] null
+]]></system-out>
+</testcase>
+<testcase name="shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)[2]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#2]
+display-name: [2] 8, 12
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectMissingWrongAndNonKeyItems(Item)[2]" classname="com.example.haunted.engine.InteractionEquipmentAndUnlockTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2]
+display-name: [2] Wrong Key
+]]></system-out>
+</testcase>
+<testcase name="shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)[1]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#1]
+display-name: [1] 0, 20
+]]></system-out>
+</testcase>
+<testcase name="shouldFindMonstersAndDetectLivingMonsters()" classname="com.example.haunted.model.RoomTest" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[method:shouldFindMonstersAndDetectLivingMonsters()]
+display-name: shouldFindMonstersAndDetectLivingMonsters()
+]]></system-out>
+</testcase>
+<testcase name="shouldBeginWithNeitherObjectiveAndNotStartedStatus()" classname="com.example.haunted.model.QuestTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.QuestTest]/[method:shouldBeginWithNeitherObjectiveAndNotStartedStatus()]
+display-name: shouldBeginWithNeitherObjectiveAndNotStartedStatus()
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceMonstersWithExpectedStatsAndLoot(String, String, int, int, int, String, String, int)[1]" classname="com.example.haunted.config.DungeonFactoryTest" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceMonstersWithExpectedStatsAndLoot(java.lang.String, java.lang.String, int, int, int, java.lang.String, java.lang.String, int)]/[test-template-invocation:#1]
+display-name: [1] lectureHall, Sleep-Deprived TA, 18, 6, 1, Coffee Potion, A backup coffee drop., 15
+]]></system-out>
+</testcase>
+<testcase name="shouldRemoveOnlyFirstMatchingItemAndPreserveMissingLookup()" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[method:shouldRemoveOnlyFirstMatchingItemAndPreserveMissingLookup()]
+display-name: shouldRemoveOnlyFirstMatchingItemAndPreserveMissingLookup()
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceMonstersWithExpectedStatsAndLoot(String, String, int, int, int, String, String, int)[2]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceMonstersWithExpectedStatsAndLoot(java.lang.String, java.lang.String, int, int, int, java.lang.String, java.lang.String, int)]/[test-template-invocation:#2]
+display-name: [2] serverCloset, Spreadsheet Golem, 28, 7, 4, Dry Erase Sword, An improvised marker tray blade., 6
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectNullRequiredArguments()" classname="com.example.haunted.model.RoomTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[method:shouldRejectNullRequiredArguments()]
+display-name: shouldRejectNullRequiredArguments()
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceMonstersWithExpectedStatsAndLoot(String, String, int, int, int, String, String, int)[3]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceMonstersWithExpectedStatsAndLoot(java.lang.String, java.lang.String, int, int, int, java.lang.String, java.lang.String, int)]/[test-template-invocation:#3]
+display-name: [3] examArchive, Plagiarism Ghost, 22, 8, 2, null, null, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceMonstersWithExpectedStatsAndLoot(String, String, int, int, int, String, String, int)[4]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceMonstersWithExpectedStatsAndLoot(java.lang.String, java.lang.String, int, int, int, java.lang.String, java.lang.String, int)]/[test-template-invocation:#4]
+display-name: [4] deanVault, Registrar Wraith, 30, 9, 3, Graduation Gown Armor, Ceremonial robes with uncanny resilience., 5
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceMonstersWithExpectedStatsAndLoot(String, String, int, int, int, String, String, int)[5]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceMonstersWithExpectedStatsAndLoot(java.lang.String, java.lang.String, int, int, int, java.lang.String, java.lang.String, int)]/[test-template-invocation:#5]
+display-name: [5] finalChamber, Final Exam Phantom, 40, 10, 4, null, null, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldRejectNullNameAndType()" classname="com.example.haunted.model.TrapTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.TrapTest]/[method:shouldRejectNullNameAndType()]
+display-name: shouldRejectNullNameAndType()
+]]></system-out>
+</testcase>
+<testcase name="shouldStayInCurrentRoomWhenExitIsMissing(Direction)[3]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#3]
+display-name: [3] EAST
+]]></system-out>
+</testcase>
+<testcase name="shouldStayInCurrentRoomWhenExitIsMissing(Direction)[2]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#2]
+display-name: [2] SOUTH
+]]></system-out>
+</testcase>
+<testcase name="shouldStayInCurrentRoomWhenExitIsMissing(Direction)[1]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#1]
+display-name: [1] NORTH
+]]></system-out>
+</testcase>
+<testcase name="shouldStayInCurrentRoomWhenExitIsMissing(Direction)[4]" classname="com.example.haunted.engine.MovementEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#4]
+display-name: [4] WEST
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceExpectedItems(String, String, Class, String, int)[1]" classname="com.example.haunted.config.DungeonFactoryTest" time="0.007">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceExpectedItems(java.lang.String, java.lang.String, java.lang.Class, java.lang.String, int)]/[test-template-invocation:#1]
+display-name: [1] lectureHall, Coffee Potion, class com.example.haunted.model.Potion, A suspiciously warm cup of coffee., 15
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceExpectedItems(String, String, Class, String, int)[2]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceExpectedItems(java.lang.String, java.lang.String, java.lang.Class, java.lang.String, int)]/[test-template-invocation:#2]
+display-name: [2] labStorage, Archive Key, class com.example.haunted.model.Key, Opens the Exam Archive., 0
+]]></system-out>
+</testcase>
+<testcase name="shouldStartWithExpectedPropertiesAndEmptyContents()" classname="com.example.haunted.model.RoomTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.model.RoomTest]/[method:shouldStartWithExpectedPropertiesAndEmptyContents()]
+display-name: shouldStartWithExpectedPropertiesAndEmptyContents()
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceExpectedItems(String, String, Class, String, int)[3]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceExpectedItems(java.lang.String, java.lang.String, java.lang.Class, java.lang.String, int)]/[test-template-invocation:#3]
+display-name: [3] labStorage, Calculator Shield, class com.example.haunted.model.Armor, A battered calculator used as a shield., 3
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceExpectedItems(String, String, Class, String, int)[4]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceExpectedItems(java.lang.String, java.lang.String, java.lang.Class, java.lang.String, int)]/[test-template-invocation:#4]
+display-name: [4] serverCloset, Stapler of Justice, class com.example.haunted.model.Weapon, A heavy-duty stapler with righteous force., 4
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceExpectedItems(String, String, Class, String, int)[5]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceExpectedItems(java.lang.String, java.lang.String, java.lang.Class, java.lang.String, int)]/[test-template-invocation:#5]
+display-name: [5] examArchive, Lost Gradebook, class com.example.haunted.model.QuestItem, The legendary missing gradebook., 0
+]]></system-out>
+</testcase>
+<testcase name="shouldPlaceExpectedItems(String, String, Class, String, int)[6]" classname="com.example.haunted.config.DungeonFactoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[test-template:shouldPlaceExpectedItems(java.lang.String, java.lang.String, java.lang.Class, java.lang.String, int)]/[test-template-invocation:#6]
+display-name: [6] deanVault, Vault Key, class com.example.haunted.model.Key, Opens the Final Chamber., 0
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)[6]" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)]/[test-template-invocation:#6]
+display-name: [6] true, false, false
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)[7]" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)]/[test-template-invocation:#7]
+display-name: [7] false, true, false
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)[8]" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)]/[test-template-invocation:#8]
+display-name: [8] true, true, false
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)[1]" classname="com.example.haunted.engine.GameEngineTest" time="0.024">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)]/[test-template-invocation:#1]
+display-name: [1] false, false, true
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)[2]" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)]/[test-template-invocation:#2]
+display-name: [2] true, false, true
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)[3]" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)]/[test-template-invocation:#3]
+display-name: [3] false, true, true
+]]></system-out>
+</testcase>
+<testcase name="shouldReportGameOverAfterLethalTrap()" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldReportGameOverAfterLethalTrap()]
+display-name: shouldReportGameOverAfterLethalTrap()
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)[4]" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)]/[test-template-invocation:#4]
+display-name: [4] true, true, true
+]]></system-out>
+</testcase>
+<testcase name="shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)[5]" classname="com.example.haunted.engine.GameEngineTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldOnlyWinWhenBothObjectivesCompleteAndPlayerAlive(boolean, boolean, boolean)]/[test-template-invocation:#5]
+display-name: [5] false, false, false
+]]></system-out>
+</testcase>
+<testcase name="shouldReturnAllSuppliedResultValues(boolean, String, boolean, int)[4]" classname="com.example.haunted.events.MoveResultTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#4]
+display-name: [4] true, Zero damage trap, true, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldAllowCompleteAdventureUsingOnlyPublicGameActions()" classname="com.example.haunted.config.DungeonFactoryTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldAllowCompleteAdventureUsingOnlyPublicGameActions()]
+display-name: shouldAllowCompleteAdventureUsingOnlyPublicGameActions()
+]]></system-out>
+</testcase>
+<testcase name="shouldReturnAllSuppliedResultValues(boolean, String, boolean, int)[1]" classname="com.example.haunted.events.MoveResultTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#1]
+display-name: [1] true, Moved, false, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldReturnAllSuppliedResultValues(boolean, String, boolean, int)[2]" classname="com.example.haunted.events.MoveResultTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#2]
+display-name: [2] false, Blocked, false, 0
+]]></system-out>
+</testcase>
+<testcase name="shouldReturnAllSuppliedResultValues(boolean, String, boolean, int)[3]" classname="com.example.haunted.events.MoveResultTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#3]
+display-name: [3] true, Trap triggered, true, 8
+]]></system-out>
+</testcase>
+<testcase name="shouldIgnoreMissingAndDisarmedTraps()" classname="com.example.haunted.rules.TrapResolverTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:com.example.haunted.rules.TrapResolverTest]/[method:shouldIgnoreMissingAndDisarmedTraps()]
+display-name: shouldIgnoreMissingAndDisarmedTraps()
+]]></system-out>
+</testcase>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]
+display-name: JUnit Jupiter
+]]></system-out>
+</testsuite>

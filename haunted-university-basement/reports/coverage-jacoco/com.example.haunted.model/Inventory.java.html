@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Inventory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.model</a> &gt; <span class="el_source">Inventory.java</span></div><h1>Inventory.java</h1><pre class="source lang-java linenums">package com.example.haunted.model;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+public class Inventory {
+    private final int capacity;
+    private final List&lt;Item&gt; items;
+
+<span class="fc" id="L12">    public Inventory(int capacity) {</span>
+<span class="fc" id="L13">        this.capacity = capacity;</span>
+<span class="fc" id="L14">        this.items = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L15">    }</span>
+
+    public boolean addItem(Item item) {
+<span class="pc bpc" id="L18" title="1 of 2 branches missed.">        if (isFull()) {</span>
+<span class="nc" id="L19">            return false;</span>
+        }
+<span class="fc" id="L21">        return items.add(item);</span>
+    }
+
+    public Optional&lt;Item&gt; findItem(String itemName) {
+<span class="fc" id="L25">        return items.stream().filter(item -&gt; item.getName().equalsIgnoreCase(itemName)).findFirst();</span>
+    }
+
+    public Item removeItem(String itemName) {
+<span class="fc" id="L29">        Optional&lt;Item&gt; item = findItem(itemName);</span>
+<span class="fc" id="L30">        item.ifPresent(items::remove);</span>
+<span class="fc" id="L31">        return item.orElse(null);</span>
+    }
+
+    public boolean contains(String itemName) {
+<span class="fc" id="L35">        return findItem(itemName).isPresent();</span>
+    }
+
+    public boolean isFull() {
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        return items.size() &gt;= capacity;</span>
+    }
+
+    public int getCapacity() {
+<span class="fc" id="L43">        return capacity;</span>
+    }
+
+    public List&lt;Item&gt; getItems() {
+<span class="fc" id="L47">        return Collections.unmodifiableList(items);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>MovementEngine.java</h1>
+
+<table class="src">
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.example.haunted.engine;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.example.haunted.events.InteractionResult;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.example.haunted.events.MoveResult;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.example.haunted.model.Direction;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.example.haunted.model.Player;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.example.haunted.model.Room;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.example.haunted.model.Trap;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.example.haunted.rules.TrapResolver;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class MovementEngine {</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final TrapResolver trapResolver;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public MovementEngine(TrapResolver trapResolver) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.trapResolver = trapResolver;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public MoveResult move(Player player, Direction direction) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Room currentRoom = player.getCurrentRoom();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Room targetRoom = currentRoom.getExit(direction);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_22'/>
+22
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_22'>1</a>
+<span>
+1. move : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (targetRoom == null) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_23'/>
+23
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_23'>1</a>
+<span>
+1. move : replaced return value with null for com/example/haunted/engine/MovementEngine::move &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return new MoveResult(false, &#34;There is no room in that direction.&#34;, false, 0);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_26'/>
+26
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_26'>1</a>
+<span>
+1. move : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (targetRoom.isLocked()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_27'/>
+27
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_27'>1</a>
+<span>
+1. move : replaced return value with null for com/example/haunted/engine/MovementEngine::move &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return new MoveResult(false, &#34;The room is locked.&#34;, false, 0);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_30'/>
+30
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_30'>1</a>
+<span>
+1. move : removed call to com/example/haunted/model/Player::setCurrentRoom &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        player.setCurrentRoom(targetRoom);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Trap trap = targetRoom.getTrap();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_32'/>
+32
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_32'>2</a>
+<span>
+1. move : negated conditional &rarr; KILLED<br/>
+2. move : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (trap != null &#38;&#38; trap.isArmed()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            InteractionResult trapResult = trapResolver.resolveTrap(player, trap);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_34'/>
+34
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_34'>1</a>
+<span>
+1. move : replaced return value with null for com/example/haunted/engine/MovementEngine::move &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            return new MoveResult(true,</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    &#34;Moved to &#34; + targetRoom.getName() + &#34;. &#34; + trapResult.getMessage(),</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    true,</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    trap.getDamage());</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_40'/>
+40
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_40'>1</a>
+<span>
+1. move : replaced return value with null for com/example/haunted/engine/MovementEngine::move &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new MoveResult(true, &#34;Moved to &#34; + targetRoom.getName() + &#34;.&#34;, false, 0);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7a560583_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7a560583_22'>22</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_22'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#1]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7a560583_23'>23</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_23'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#1]</span></span> replaced return value with null for com/example/haunted/engine/MovementEngine::move &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7a560583_26'>26</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_26'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#2]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7a560583_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_27'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[method:shouldNotMoveOrTriggerTrapInLockedRoom()]</span></span> replaced return value with null for com/example/haunted/engine/MovementEngine::move &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7a560583_30'>30</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_30'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#2]</span></span> removed call to com/example/haunted/model/Player::setCurrentRoom &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7a560583_32'>32</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_32'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#2]</span></span> negated conditional &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[method:shouldMoveWithoutTriggeringDisarmedTrap()]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7a560583_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_34'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#4]</span></span> replaced return value with null for com/example/haunted/engine/MovementEngine::move &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7a560583_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a560583_40'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>move<br/><b>Killed by : </b>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#2]</span></span> replaced return value with null for com/example/haunted/engine/MovementEngine::move &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#4] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[method:shouldMoveWithoutTriggeringDisarmedTrap()] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#4] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#1] (2 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldExposeActualPlayerQuestAndCurrentRoom()] (0 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldReportGameOverAfterLethalTrap()] (0 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldOnlyAttackMonsterInCurrentRoomAndApplyReturnedDamage()] (0 ms)</li><li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldPlaceArmedOneTimeElectricTrapInElevator()] (3 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldCreateIndependentGames()] (1 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#1] (1 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()] (0 ms)</li><li>com.example.haunted.MainTest.[engine:junit-jupiter]/[class:com.example.haunted.MainTest]/[method:shouldPrintStartingRoomMovementAndPickup()] (15 ms)</li><li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldAllowCompleteAdventureUsingOnlyPublicGameActions()] (1 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#4] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[method:shouldNotMoveOrTriggerTrapInLockedRoom()] (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.17.3
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>haunted-university-basement</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Haunted University Basement</name>
+    <description>Deterministic Java Maven dungeon engine for JUnit testing practice.</description>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>5.11.4</junit.version>
+    </properties>
+
+    <dependencies>
+        <!-- This dependency provides JUnit 5 tests, assertions, parameterized tests, and the test engine. -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.17.3</version>
+                <dependencies>
+                    <!-- This dependency lets Pitest discover and execute JUnit 5 tests. -->
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.2.2</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <targetClasses><param>com.example.haunted.*</param></targetClasses>
+                    <targetTests><param>com.example.haunted.*</param></targetTests>
+                    <outputFormats><param>HTML</param><param>CSV</param><param>XML</param></outputFormats>
+                    <timestampedReports>false</timestampedReports>
+                    <threads>2</threads>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
+                <executions>
+                    <execution><goals><goal>prepare-agent</goal></goals></execution>
+                    <execution><id>report</id><phase>test</phase><goals><goal>report</goal></goals></execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

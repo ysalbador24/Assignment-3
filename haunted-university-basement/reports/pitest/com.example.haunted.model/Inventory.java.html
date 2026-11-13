@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Inventory.java</h1>
+
+<table class="src">
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.example.haunted.model;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.ArrayList;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Collections;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Optional;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Inventory {</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final int capacity;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final List&#60;Item&#62; items;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Inventory(int capacity) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.capacity = capacity;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.items = new ArrayList&#60;&#62;();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean addItem(Item item) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_18'/>
+18
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_18'>1</a>
+<span>
+1. addItem : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (isFull()) {</span></pre></td></tr>
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_19'/>
+19
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_19'>1</a>
+<span>
+1. addItem : replaced boolean return with true for com/example/haunted/model/Inventory::addItem &rarr; NO_COVERAGE<br/>
+
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return false;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_21'/>
+21
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_21'>2</a>
+<span>
+1. addItem : replaced boolean return with true for com/example/haunted/model/Inventory::addItem &rarr; SURVIVED<br/>
+2. addItem : replaced boolean return with false for com/example/haunted/model/Inventory::addItem &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return items.add(item);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Optional&#60;Item&#62; findItem(String itemName) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_25'/>
+25
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_25'>3</a>
+<span>
+1. findItem : replaced return value with Optional.empty for com/example/haunted/model/Inventory::findItem &rarr; KILLED<br/>
+2. lambda$0 : replaced boolean return with true for com/example/haunted/model/Inventory::lambda$0 &rarr; KILLED<br/>
+3. lambda$0 : replaced boolean return with false for com/example/haunted/model/Inventory::lambda$0 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return items.stream().filter(item -&#62; item.getName().equalsIgnoreCase(itemName)).findFirst();</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Item removeItem(String itemName) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Optional&#60;Item&#62; item = findItem(itemName);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_30'/>
+30
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_30'>1</a>
+<span>
+1. removeItem : removed call to java/util/Optional::ifPresent &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        item.ifPresent(items::remove);</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_31'/>
+31
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_31'>1</a>
+<span>
+1. removeItem : replaced return value with null for com/example/haunted/model/Inventory::removeItem &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return item.orElse(null);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean contains(String itemName) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_35'/>
+35
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_35'>2</a>
+<span>
+1. contains : replaced boolean return with true for com/example/haunted/model/Inventory::contains &rarr; KILLED<br/>
+2. contains : replaced boolean return with false for com/example/haunted/model/Inventory::contains &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return findItem(itemName).isPresent();</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_36'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isFull() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_39'/>
+39
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_39'>4</a>
+<span>
+1. isFull : replaced boolean return with false for com/example/haunted/model/Inventory::isFull &rarr; NO_COVERAGE<br/>
+2. isFull : changed conditional boundary &rarr; SURVIVED<br/>
+3. isFull : negated conditional &rarr; KILLED<br/>
+4. isFull : replaced boolean return with true for com/example/haunted/model/Inventory::isFull &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return items.size() &#62;= capacity;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_40'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getCapacity() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_43'/>
+43
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_43'>1</a>
+<span>
+1. getCapacity : replaced int return with 0 for com/example/haunted/model/Inventory::getCapacity &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return capacity;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_45'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public List&#60;Item&#62; getItems() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_47'/>
+47
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_47'>1</a>
+<span>
+1. getItems : replaced return value with Collections.emptyList for com/example/haunted/model/Inventory::getItems &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return Collections.unmodifiableList(items);</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@13518f37_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_18'>18</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_18'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>addItem<br/><b>Killed by : </b>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_19'>19</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_19'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>addItem<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for com/example/haunted/model/Inventory::addItem &rarr; NO_COVERAGE</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_21'>21</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_21'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>addItem<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for com/example/haunted/model/Inventory::addItem &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=addItem,-methodDesc=(Lcom/example/haunted/model/Item;)Z],-indexes=[17],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=addItem,-methodDesc=(Lcom/example/haunted/model/Item;)Z],-indexes=[17],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=addItem,-methodDesc=(Lcom/example/haunted/model/Item;)Z],-indexes=[17],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#3]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#4]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#3]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#2]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldEquipAndReplaceArmorWithoutConsumingIt()]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldEquipAndReplaceWeaponWithoutConsumingIt()]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#1]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#2]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#1]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#3]</li> <li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#2]</li> <li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldCreateIndependentGames()]</li> <li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#1]</li> <li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()]</li> <li>com.example.haunted.MainTest.[engine:junit-jupiter]/[class:com.example.haunted.MainTest]/[method:shouldPrintStartingRoomMovementAndPickup()]</li> <li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldAllowCompleteAdventureUsingOnlyPublicGameActions()]</li> 
+</ul>
+</div></div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>addItem<br/><b>Killed by : </b>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#2]</span></span> replaced boolean return with false for com/example/haunted/model/Inventory::addItem &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_25'>25</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_25'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findItem<br/><b>Killed by : </b>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#3]</span></span> replaced return value with Optional.empty for com/example/haunted/model/Inventory::findItem &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>lambda$0<br/><b>Killed by : </b>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2]</span></span> replaced boolean return with true for com/example/haunted/model/Inventory::lambda$0 &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>lambda$0<br/><b>Killed by : </b>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#3]</span></span> replaced boolean return with false for com/example/haunted/model/Inventory::lambda$0 &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_30'>30</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_30'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>removeItem<br/><b>Killed by : </b>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()]</span></span> removed call to java/util/Optional::ifPresent &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_31'>31</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_31'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>removeItem<br/><b>Killed by : </b>none</span></span> replaced return value with null for com/example/haunted/model/Inventory::removeItem &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=removeItem,-methodDesc=(Ljava/lang/String;)Lcom/example/haunted/model/Item;],-indexes=[23],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=removeItem,-methodDesc=(Ljava/lang/String;)Lcom/example/haunted/model/Item;],-indexes=[23],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=removeItem,-methodDesc=(Ljava/lang/String;)Lcom/example/haunted/model/Item;],-indexes=[23],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()]</li> <li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldAllowCompleteAdventureUsingOnlyPublicGameActions()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_35'>35</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_35'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>contains<br/><b>Killed by : </b>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()]</span></span> replaced boolean return with true for com/example/haunted/model/Inventory::contains &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>contains<br/><b>Killed by : </b>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#2]</span></span> replaced boolean return with false for com/example/haunted/model/Inventory::contains &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_39'>39</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_39'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isFull<br/><b>Killed by : </b>none</span></span> replaced boolean return with false for com/example/haunted/model/Inventory::isFull &rarr; NO_COVERAGE</span>
+</div> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isFull<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=isFull,-methodDesc=()Z],-indexes=[8],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=isFull,-methodDesc=()Z],-indexes=[8],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=com.example.haunted.model.Inventory,-method=isFull,-methodDesc=()Z],-indexes=[8],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#3]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#4]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#3]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#2]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldEquipAndReplaceArmorWithoutConsumingIt()]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldEquipAndReplaceWeaponWithoutConsumingIt()]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#1]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#2]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#1]</li> <li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#3]</li> <li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#2]</li> <li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldCreateIndependentGames()]</li> <li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#1]</li> <li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()]</li> <li>com.example.haunted.MainTest.[engine:junit-jupiter]/[class:com.example.haunted.MainTest]/[method:shouldPrintStartingRoomMovementAndPickup()]</li> <li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldAllowCompleteAdventureUsingOnlyPublicGameActions()]</li> 
+</ul>
+</div></div> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isFull<br/><b>Killed by : </b>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2]</span></span> negated conditional &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>isFull<br/><b>Killed by : </b>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2]</span></span> replaced boolean return with true for com/example/haunted/model/Inventory::isFull &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_43'>43</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_43'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getCapacity<br/><b>Killed by : </b>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldCreateExpectedStartingPlayerAndQuest()]</span></span> replaced int return with 0 for com/example/haunted/model/Inventory::getCapacity &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@13518f37_47'>47</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@13518f37_47'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getItems<br/><b>Killed by : </b>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2]</span></span> replaced return value with Collections.emptyList for com/example/haunted/model/Inventory::getItems &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#4] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldEquipAndReplaceArmorWithoutConsumingIt()] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldEquipAndReplaceWeaponWithoutConsumingIt()] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectUnequippableItemsAndPreserveEquipment(com.example.haunted.model.Item)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(java.lang.String)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldCreateIndependentGames()] (1 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[test-template:shouldWinThroughPickupAndCombatInEitherOrder(boolean)]/[test-template-invocation:#1] (1 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()] (0 ms)</li><li>com.example.haunted.MainTest.[engine:junit-jupiter]/[class:com.example.haunted.MainTest]/[method:shouldPrintStartingRoomMovementAndPickup()] (15 ms)</li><li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldAllowCompleteAdventureUsingOnlyPublicGameActions()] (1 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[method:shouldRejectMissingEquipment()] (0 ms)</li><li>com.example.haunted.engine.InteractionEquipmentAndUnlockTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.InteractionEquipmentAndUnlockTest]/[test-template:shouldRejectMissingWrongAndNonKeyItems(com.example.haunted.model.Item)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldCreateExpectedStartingPlayerAndQuest()] (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.17.3
+
+</body>
+</html>

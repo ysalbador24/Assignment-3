@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Room.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCo Coverage Report</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.model</a> &gt; <span class="el_source">Room.java</span></div><h1>Room.java</h1><pre class="source lang-java linenums">package com.example.haunted.model;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+
+public class Room {
+    private final String id;
+    private final String name;
+    private final String description;
+    private final Map&lt;Direction, Room&gt; exits;
+    private final List&lt;Item&gt; items;
+    private final List&lt;Monster&gt; monsters;
+    private boolean locked;
+    private String requiredKeyName;
+    private Trap trap;
+
+<span class="fc" id="L22">    public Room(String id, String name, String description) {</span>
+<span class="fc" id="L23">        this.id = Objects.requireNonNull(id);</span>
+<span class="fc" id="L24">        this.name = Objects.requireNonNull(name);</span>
+<span class="fc" id="L25">        this.description = Objects.requireNonNull(description);</span>
+<span class="fc" id="L26">        this.exits = new EnumMap&lt;&gt;(Direction.class);</span>
+<span class="fc" id="L27">        this.items = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L28">        this.monsters = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L29">    }</span>
+
+    public String getId() {
+<span class="fc" id="L32">        return id;</span>
+    }
+
+    public String getName() {
+<span class="fc" id="L36">        return name;</span>
+    }
+
+    public String getDescription() {
+<span class="fc" id="L40">        return description;</span>
+    }
+
+    public void connect(Direction direction, Room room) {
+<span class="fc" id="L44">        exits.put(Objects.requireNonNull(direction), Objects.requireNonNull(room));</span>
+<span class="fc" id="L45">    }</span>
+
+    public Room getExit(Direction direction) {
+<span class="fc" id="L48">        return exits.get(direction);</span>
+    }
+
+    public Map&lt;Direction, Room&gt; getExits() {
+<span class="fc" id="L52">        return Collections.unmodifiableMap(exits);</span>
+    }
+
+    public void addItem(Item item) {
+<span class="fc" id="L56">        items.add(Objects.requireNonNull(item));</span>
+<span class="fc" id="L57">    }</span>
+
+    public Item removeItemByName(String itemName) {
+<span class="fc" id="L60">        Optional&lt;Item&gt; item = items.stream().filter(i -&gt; i.getName().equalsIgnoreCase(itemName)).findFirst();</span>
+<span class="fc" id="L61">        item.ifPresent(items::remove);</span>
+<span class="fc" id="L62">        return item.orElse(null);</span>
+    }
+
+    public Optional&lt;Item&gt; findItem(String itemName) {
+<span class="fc" id="L66">        return items.stream().filter(i -&gt; i.getName().equalsIgnoreCase(itemName)).findFirst();</span>
+    }
+
+    public List&lt;Item&gt; getItems() {
+<span class="fc" id="L70">        return Collections.unmodifiableList(items);</span>
+    }
+
+    public void addMonster(Monster monster) {
+<span class="fc" id="L74">        monsters.add(Objects.requireNonNull(monster));</span>
+<span class="fc" id="L75">    }</span>
+
+    public Optional&lt;Monster&gt; findMonster(String monsterName) {
+<span class="fc" id="L78">        return monsters.stream().filter(m -&gt; m.getName().equalsIgnoreCase(monsterName)).findFirst();</span>
+    }
+
+    public List&lt;Monster&gt; getMonsters() {
+<span class="fc" id="L82">        return Collections.unmodifiableList(monsters);</span>
+    }
+
+    public boolean hasLivingMonsters() {
+<span class="fc" id="L86">        return monsters.stream().anyMatch(Monster::isAlive);</span>
+    }
+
+    public boolean isLocked() {
+<span class="fc" id="L90">        return locked;</span>
+    }
+
+    public void setLocked(boolean locked, String requiredKeyName) {
+<span class="fc" id="L94">        this.locked = locked;</span>
+<span class="fc" id="L95">        this.requiredKeyName = requiredKeyName;</span>
+<span class="fc" id="L96">    }</span>
+
+    public String getRequiredKeyName() {
+<span class="fc" id="L99">        return requiredKeyName;</span>
+    }
+
+    public boolean unlock(String keyName) {
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if (!locked) {</span>
+<span class="fc" id="L104">            return true;</span>
+        }
+<span class="fc bfc" id="L106" title="All 4 branches covered.">        if (requiredKeyName != null &amp;&amp; requiredKeyName.equalsIgnoreCase(keyName)) {</span>
+<span class="fc" id="L107">            locked = false;</span>
+<span class="fc" id="L108">            return true;</span>
+        }
+<span class="fc" id="L110">        return false;</span>
+    }
+
+    public Trap getTrap() {
+<span class="fc" id="L114">        return trap;</span>
+    }
+
+    public void setTrap(Trap trap) {
+<span class="fc" id="L118">        this.trap = trap;</span>
+<span class="fc" id="L119">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
