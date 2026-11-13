@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>MoveResultTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.events</a> &gt; <span class="el_source">MoveResultTest.java</span></div><h1>MoveResultTest.java</h1><pre class="source lang-java linenums">package com.example.haunted.events;
+
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+<span class="fc" id="L9">class MoveResultTest {</span>
+
+    static Stream&lt;Arguments&gt; resultCases() {
+<span class="fc" id="L12">        return Stream.of(Arguments.of(true, &quot;Moved&quot;, false, 0),</span>
+<span class="fc" id="L13">            Arguments.of(false, &quot;Blocked&quot;, false, 0),</span>
+<span class="fc" id="L14">            Arguments.of(true, &quot;Trap triggered&quot;, true, 8),</span>
+<span class="fc" id="L15">            Arguments.of(true, &quot;Zero damage trap&quot;, true, 0));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;resultCases&quot;)
+    void shouldReturnAllSuppliedResultValues(boolean success, String message, boolean triggered, int damage) {
+<span class="fc" id="L20">        MoveResult result = new MoveResult(success, message, triggered, damage);</span>
+<span class="fc" id="L21">        assertEquals(success, result.isSuccess());</span>
+<span class="fc" id="L22">        assertEquals(message, result.getMessage());</span>
+<span class="fc" id="L23">        assertEquals(triggered, result.isTrapTriggered());</span>
+<span class="fc" id="L24">        assertEquals(damage, result.getTrapDamage());</span>
+<span class="fc" id="L25">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

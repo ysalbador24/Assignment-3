@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>MainTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted</a> &gt; <span class="el_source">MainTest.java</span></div><h1>MainTest.java</h1><pre class="source lang-java linenums">package com.example.haunted;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L6">class MainTest {</span>
+
+    @Test
+    void shouldPrintStartingRoomMovementAndPickup() throws Exception {
+<span class="fc" id="L10">        java.io.PrintStream original = System.out;</span>
+<span class="fc" id="L11">        java.io.ByteArrayOutputStream bytes = new java.io.ByteArrayOutputStream();</span>
+<span class="fc" id="L12">        try (java.io.PrintStream capture = new java.io.PrintStream(bytes, true, java.nio.charset.StandardCharsets.UTF_8)) {</span>
+<span class="fc" id="L13">            System.setOut(capture);</span>
+<span class="fc" id="L14">            Main.main(new String[0]);</span>
+        } finally {
+<span class="fc" id="L16">            System.setOut(original);</span>
+        }
+<span class="fc" id="L18">        String expected = String.join(System.lineSeparator(),</span>
+<span class="fc" id="L19">            &quot;Maintenance Stairwell&quot;, &quot;Moved to Abandoned Lecture Hall.&quot;, &quot;Picked up Coffee Potion.&quot;)</span>
+<span class="fc" id="L20">            + System.lineSeparator();</span>
+<span class="fc" id="L21">        assertEquals(expected, bytes.toString(java.nio.charset.StandardCharsets.UTF_8));</span>
+<span class="fc" id="L22">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

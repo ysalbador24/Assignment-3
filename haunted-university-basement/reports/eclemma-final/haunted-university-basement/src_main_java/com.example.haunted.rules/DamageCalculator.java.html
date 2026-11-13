@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>DamageCalculator.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.rules</a> &gt; <span class="el_source">DamageCalculator.java</span></div><h1>DamageCalculator.java</h1><pre class="source lang-java linenums">package com.example.haunted.rules;
+
+import com.example.haunted.model.BossMonster;
+import com.example.haunted.model.Monster;
+import com.example.haunted.model.Player;
+
+<span class="fc" id="L7">public class DamageCalculator {</span>
+    public int calculatePlayerDamage(Player player, Monster monster) {
+<span class="fc" id="L9">        return Math.max(1, player.getAttackPower() - monster.getDefense());</span>
+    }
+
+    public int calculateMonsterDamage(Monster monster, Player player) {
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        int attack = monster instanceof BossMonster bossMonster ? bossMonster.getCurrentAttack() : monster.getAttack();</span>
+<span class="fc" id="L14">        return Math.max(1, attack - player.getDefensePower());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

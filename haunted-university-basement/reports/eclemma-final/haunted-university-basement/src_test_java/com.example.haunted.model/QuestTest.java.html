@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>QuestTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.model</a> &gt; <span class="el_source">QuestTest.java</span></div><h1>QuestTest.java</h1><pre class="source lang-java linenums">package com.example.haunted.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+<span class="fc" id="L8">class QuestTest {</span>
+
+    @Test
+    void shouldBeginWithNeitherObjectiveAndNotStartedStatus() {
+<span class="fc" id="L12">        Quest quest = new Quest(&quot;Escape&quot;, &quot;Find book and defeat boss&quot;);</span>
+<span class="fc" id="L13">        assertEquals(&quot;Escape&quot;, quest.getName());</span>
+<span class="fc" id="L14">        assertEquals(&quot;Find book and defeat boss&quot;, quest.getDescription());</span>
+<span class="fc" id="L15">        assertEquals(QuestStatus.NOT_STARTED, quest.getStatus());</span>
+<span class="fc" id="L16">        assertFalse(quest.isGradebookRecovered());</span>
+<span class="fc" id="L17">        assertFalse(quest.isPhantomDefeated());</span>
+<span class="fc" id="L18">        assertFalse(quest.isComplete());</span>
+<span class="fc" id="L19">        quest.updateStatus();</span>
+<span class="fc" id="L20">        assertEquals(QuestStatus.NOT_STARTED, quest.getStatus());</span>
+<span class="fc" id="L21">    }</span>
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void shouldCompleteObjectivesInEitherOrder(boolean bookFirst) {
+<span class="fc" id="L25">        Quest quest = new Quest(&quot;Escape&quot;, &quot;Description&quot;);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (bookFirst) quest.markGradebookRecovered();</span>
+<span class="fc" id="L27">        else quest.markPhantomDefeated();</span>
+<span class="fc" id="L28">        assertEquals(bookFirst, quest.isGradebookRecovered());</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        assertEquals(!bookFirst, quest.isPhantomDefeated());</span>
+<span class="fc" id="L30">        assertEquals(QuestStatus.IN_PROGRESS, quest.getStatus());</span>
+<span class="fc" id="L31">        assertFalse(quest.isComplete());</span>
+        // Repeating one objective must not complete the other objective.
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (bookFirst) quest.markGradebookRecovered();</span>
+<span class="fc" id="L34">        else quest.markPhantomDefeated();</span>
+<span class="fc" id="L35">        assertEquals(QuestStatus.IN_PROGRESS, quest.getStatus());</span>
+<span class="fc" id="L36">        assertFalse(quest.isComplete());</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (bookFirst) quest.markPhantomDefeated();</span>
+<span class="fc" id="L38">        else quest.markGradebookRecovered();</span>
+<span class="fc" id="L39">        assertTrue(quest.isGradebookRecovered());</span>
+<span class="fc" id="L40">        assertTrue(quest.isPhantomDefeated());</span>
+<span class="fc" id="L41">        assertEquals(QuestStatus.COMPLETED, quest.getStatus());</span>
+<span class="fc" id="L42">        assertTrue(quest.isComplete());</span>
+<span class="fc" id="L43">        quest.markGradebookRecovered();</span>
+<span class="fc" id="L44">        quest.markPhantomDefeated();</span>
+<span class="fc" id="L45">        quest.updateStatus();</span>
+<span class="fc" id="L46">        assertEquals(QuestStatus.COMPLETED, quest.getStatus());</span>
+<span class="fc" id="L47">        assertTrue(quest.isComplete());</span>
+<span class="fc" id="L48">    }</span>
+    @Test
+    void shouldRejectNullNameAndDescription() {
+<span class="pc" id="L51">        assertThrows(NullPointerException.class, () -&gt; new Quest(null, &quot;Desc&quot;));</span>
+<span class="pc" id="L52">        assertThrows(NullPointerException.class, () -&gt; new Quest(&quot;Name&quot;, null));</span>
+<span class="fc" id="L53">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

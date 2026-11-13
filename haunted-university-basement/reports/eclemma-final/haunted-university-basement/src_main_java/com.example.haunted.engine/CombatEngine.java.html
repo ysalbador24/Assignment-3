@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>CombatEngine.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.engine</a> &gt; <span class="el_source">CombatEngine.java</span></div><h1>CombatEngine.java</h1><pre class="source lang-java linenums">package com.example.haunted.engine;
+
+import com.example.haunted.events.CombatResult;
+import com.example.haunted.model.Item;
+import com.example.haunted.model.Monster;
+import com.example.haunted.model.Player;
+import com.example.haunted.model.Room;
+import com.example.haunted.model.Quest;
+import com.example.haunted.rules.DamageCalculator;
+import com.example.haunted.rules.QuestTracker;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CombatEngine {
+    private final DamageCalculator damageCalculator;
+    private final QuestTracker questTracker;
+
+<span class="fc" id="L19">    public CombatEngine(DamageCalculator damageCalculator, QuestTracker questTracker) {</span>
+<span class="fc" id="L20">        this.damageCalculator = damageCalculator;</span>
+<span class="fc" id="L21">        this.questTracker = questTracker;</span>
+<span class="fc" id="L22">    }</span>
+
+    public CombatResult attack(Player player, Quest quest, Monster monster) {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (monster == null) {</span>
+<span class="fc" id="L26">            return new CombatResult(false, &quot;Monster not found.&quot;, 0, 0, false, List.of());</span>
+        }
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (!player.isAlive()) {</span>
+<span class="fc" id="L29">            return new CombatResult(false, &quot;Player is defeated.&quot;, 0, 0, false, List.of());</span>
+        }
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (!monster.isAlive()) {</span>
+<span class="fc" id="L32">            return new CombatResult(false, &quot;Monster is already defeated.&quot;, 0, 0, true, List.of());</span>
+        }
+
+<span class="fc" id="L35">        int damageToMonster = damageCalculator.calculatePlayerDamage(player, monster);</span>
+<span class="fc" id="L36">        monster.takeDamage(damageToMonster);</span>
+
+<span class="fc" id="L38">        int damageToPlayer = 0;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        boolean defeated = !monster.isAlive();</span>
+<span class="fc" id="L40">        List&lt;Item&gt; droppedItems = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (defeated) {</span>
+<span class="fc" id="L43">            Room room = player.getCurrentRoom();</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">            for (Item item : monster.getLoot()) {</span>
+<span class="fc" id="L45">                room.addItem(item);</span>
+<span class="fc" id="L46">                droppedItems.add(item);</span>
+            }
+<span class="fc" id="L48">            questTracker.updateQuestForMonster(quest, monster);</span>
+<span class="fc" id="L49">            return new CombatResult(true,</span>
+<span class="fc" id="L50">                    &quot;Defeated &quot; + monster.getName() + &quot;.&quot;,</span>
+<span class="fc" id="L51">                    damageToMonster,</span>
+<span class="fc" id="L52">                    0,</span>
+<span class="fc" id="L53">                    true,</span>
+<span class="fc" id="L54">                    droppedItems);</span>
+        }
+
+<span class="fc" id="L57">        damageToPlayer = damageCalculator.calculateMonsterDamage(monster, player);</span>
+<span class="fc" id="L58">        player.takeDamage(damageToPlayer);</span>
+<span class="fc" id="L59">        return new CombatResult(true,</span>
+<span class="fc" id="L60">                &quot;Attacked &quot; + monster.getName() + &quot;.&quot;,</span>
+<span class="fc" id="L61">                damageToMonster,</span>
+<span class="fc" id="L62">                damageToPlayer,</span>
+<span class="fc" id="L63">                false,</span>
+<span class="fc" id="L64">                droppedItems);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

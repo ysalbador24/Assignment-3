@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>InventoryTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.inventory.test</a> &gt; <span class="el_source">InventoryTest.java</span></div><h1>InventoryTest.java</h1><pre class="source lang-java linenums">package com.example.haunted.inventory.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.example.haunted.model.Inventory;
+import com.example.haunted.model.Potion;
+
+<span class="fc" id="L11">class InventoryTest {</span>
+
+    private Inventory inventory;
+    private Potion potion1;
+    private Potion potion2;
+    private Potion potion3;
+
+    @BeforeEach
+    void setUp() {
+<span class="fc" id="L20">        inventory = new Inventory(2);</span>
+
+<span class="fc" id="L22">        potion1 = new Potion(&quot;Health Potion&quot;, &quot;Restores health.&quot;, 20);</span>
+<span class="fc" id="L23">        potion2 = new Potion(&quot;Mana Potion&quot;, &quot;Restores mana.&quot;, 15);</span>
+<span class="fc" id="L24">        potion3 = new Potion(&quot;Strength Potion&quot;, &quot;Increases strength.&quot;, 10);</span>
+<span class="fc" id="L25">    }</span>
+
+    @Test
+    void newInventoryIsEmpty() {
+<span class="fc" id="L29">        assertTrue(inventory.getItems().isEmpty());</span>
+<span class="fc" id="L30">        assertFalse(inventory.isFull());</span>
+<span class="fc" id="L31">    }</span>
+
+    @Test
+    void inventoryStoresItsCapacity() {
+<span class="fc" id="L35">        assertEquals(2, inventory.getCapacity());</span>
+<span class="fc" id="L36">    }</span>
+
+    @Test
+    void itemCanBeAddedToInventory() {
+<span class="fc" id="L40">        assertTrue(inventory.addItem(potion1));</span>
+
+<span class="fc" id="L42">        assertEquals(1, inventory.getItems().size());</span>
+<span class="fc" id="L43">        assertTrue(inventory.contains(&quot;Health Potion&quot;));</span>
+<span class="fc" id="L44">        assertSame(potion1, inventory.getItems().get(0)); // item 1 in inventory is the same as the newly added item</span>
+<span class="fc" id="L45">    }</span>
+
+    @Test
+    void inventoryBecomesFullWhenCapacityIsReached() {
+<span class="fc" id="L49">        inventory.addItem(potion1);</span>
+
+<span class="fc" id="L51">        assertFalse(inventory.isFull());</span>
+
+<span class="fc" id="L53">        inventory.addItem(potion2);</span>
+
+<span class="fc" id="L55">        assertTrue(inventory.isFull());</span>
+<span class="fc" id="L56">    }</span>
+
+    @Test
+    void cannotAddItemWhenInventoryIsFull() {
+<span class="fc" id="L60">        inventory.addItem(potion1);</span>
+<span class="fc" id="L61">        inventory.addItem(potion2);</span>
+
+<span class="fc" id="L63">        assertFalse(inventory.addItem(potion3));</span>
+
+<span class="fc" id="L65">        assertEquals(2, inventory.getItems().size());</span>
+<span class="fc" id="L66">        assertFalse(inventory.contains(&quot;Strength Potion&quot;));</span>
+<span class="fc" id="L67">    }</span>
+
+    @Test
+    void canFindItemByName() {
+<span class="fc" id="L71">        inventory.addItem(potion1);</span>
+
+<span class="fc" id="L73">        assertTrue(inventory.findItem(&quot;Health Potion&quot;).isPresent());</span>
+<span class="fc" id="L74">        assertEquals(potion1, inventory.findItem(&quot;Health Potion&quot;).get());</span>
+<span class="fc" id="L75">    }</span>
+
+    @Test
+    void findingItemIsCaseInsensitive() {
+<span class="fc" id="L79">        inventory.addItem(potion1);</span>
+
+<span class="fc" id="L81">        assertTrue(inventory.findItem(&quot;health potion&quot;).isPresent());</span>
+<span class="fc" id="L82">        assertTrue(inventory.contains(&quot;HEALTH POTION&quot;));</span>
+<span class="fc" id="L83">    }</span>
+
+    @Test
+    void findingNonexistentItemReturnsEmptyOptional() {
+<span class="fc" id="L87">        assertTrue(inventory.findItem(&quot;Missing Potion&quot;).isEmpty());</span>
+<span class="fc" id="L88">        assertFalse(inventory.contains(&quot;Missing Potion&quot;));</span>
+<span class="fc" id="L89">    }</span>
+
+    @Test
+    void canRemoveItemFromInventory() {
+<span class="fc" id="L93">        inventory.addItem(potion1);</span>
+
+<span class="fc" id="L95">        Potion removedPotion = (Potion) inventory.removeItem(&quot;Health Potion&quot;);</span>
+
+<span class="fc" id="L97">        assertEquals(potion1, removedPotion);</span>
+<span class="fc" id="L98">        assertFalse(inventory.contains(&quot;Health Potion&quot;));</span>
+<span class="fc" id="L99">        assertEquals(0, inventory.getItems().size());</span>
+<span class="fc" id="L100">    }</span>
+
+    @Test
+    void removingNonexistentItemReturnsNull() {
+<span class="fc" id="L104">        assertNull(inventory.removeItem(&quot;Missing Potion&quot;));</span>
+<span class="fc" id="L105">        assertTrue(inventory.getItems().isEmpty());</span>
+<span class="fc" id="L106">    }</span>
+
+    @Test
+    void removingItemMakesRoomForAnotherItem() {
+<span class="fc" id="L110">        inventory.addItem(potion1);</span>
+<span class="fc" id="L111">        inventory.addItem(potion2);</span>
+
+<span class="fc" id="L113">        inventory.removeItem(&quot;Health Potion&quot;);</span>
+
+<span class="fc" id="L115">        assertFalse(inventory.isFull());</span>
+<span class="fc" id="L116">        assertTrue(inventory.addItem(potion3));</span>
+<span class="fc" id="L117">        assertEquals(2, inventory.getItems().size());</span>
+<span class="fc" id="L118">    }</span>
+
+    @Test
+    void returnedItemListCannotBeModified() {
+<span class="fc" id="L122">        assertThrows(</span>
+<span class="fc" id="L123">            UnsupportedOperationException.class,</span>
+<span class="pc" id="L124">            () -&gt; inventory.getItems().add(potion1)</span>
+        );
+<span class="fc" id="L126">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

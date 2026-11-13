@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>InteractionEngine.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.engine</a> &gt; <span class="el_source">InteractionEngine.java</span></div><h1>InteractionEngine.java</h1><pre class="source lang-java linenums">package com.example.haunted.engine;
+
+import com.example.haunted.events.InteractionResult;
+import com.example.haunted.model.Armor;
+import com.example.haunted.model.Item;
+import com.example.haunted.model.Key;
+import com.example.haunted.model.Player;
+import com.example.haunted.model.Potion;
+import com.example.haunted.model.Room;
+import com.example.haunted.model.Weapon;
+import com.example.haunted.rules.QuestTracker;
+import com.example.haunted.model.Quest;
+
+import java.util.Optional;
+
+public class InteractionEngine {
+    private final QuestTracker questTracker;
+
+<span class="fc" id="L19">    public InteractionEngine(QuestTracker questTracker) {</span>
+<span class="fc" id="L20">        this.questTracker = questTracker;</span>
+<span class="fc" id="L21">    }</span>
+
+    public InteractionResult pickUpItem(Player player, Quest quest, String itemName) {
+<span class="fc" id="L24">        Room room = player.getCurrentRoom();</span>
+<span class="fc" id="L25">        Item item = room.removeItemByName(itemName);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (item == null) {</span>
+<span class="fc" id="L27">            return new InteractionResult(false, &quot;Item not found in the room.&quot;);</span>
+        }
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (!player.getInventory().addItem(item)) {</span>
+<span class="fc" id="L30">            room.addItem(item);</span>
+<span class="fc" id="L31">            return new InteractionResult(false, &quot;Inventory is full.&quot;);</span>
+        }
+<span class="fc" id="L33">        questTracker.updateQuestForItem(quest, item);</span>
+<span class="fc" id="L34">        return new InteractionResult(true, &quot;Picked up &quot; + item.getName() + &quot;.&quot;);</span>
+    }
+
+    public InteractionResult useItem(Player player, String itemName) {
+<span class="fc" id="L38">        Optional&lt;Item&gt; itemOptional = player.getInventory().findItem(itemName);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (itemOptional.isEmpty()) {</span>
+<span class="fc" id="L40">            return new InteractionResult(false, &quot;Item not found in inventory.&quot;);</span>
+        }
+
+<span class="fc" id="L43">        Item item = itemOptional.get();</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (!(item instanceof Potion potion)) {</span>
+<span class="nc" id="L45">            return new InteractionResult(false, &quot;That item cannot be used.&quot;);</span>
+        }
+
+<span class="fc" id="L48">        potion.use(player);</span>
+<span class="fc" id="L49">        player.getInventory().removeItem(itemName);</span>
+<span class="fc" id="L50">        return new InteractionResult(true, &quot;Used &quot; + item.getName() + &quot;.&quot;);</span>
+    }
+
+    public InteractionResult equipItem(Player player, String itemName) {
+<span class="fc" id="L54">        Optional&lt;Item&gt; itemOptional = player.getInventory().findItem(itemName);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (itemOptional.isEmpty()) {</span>
+<span class="fc" id="L56">            return new InteractionResult(false, &quot;Item not found in inventory.&quot;);</span>
+        }
+
+<span class="fc" id="L59">        Item item = itemOptional.get();</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (item instanceof Weapon weapon) {</span>
+<span class="fc" id="L61">            player.equipWeapon(weapon);</span>
+<span class="fc" id="L62">            return new InteractionResult(true, &quot;Equipped weapon &quot; + item.getName() + &quot;.&quot;);</span>
+        }
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (item instanceof Armor armor) {</span>
+<span class="fc" id="L65">            player.equipArmor(armor);</span>
+<span class="fc" id="L66">            return new InteractionResult(true, &quot;Equipped armor &quot; + item.getName() + &quot;.&quot;);</span>
+        }
+<span class="fc" id="L68">        return new InteractionResult(false, &quot;That item cannot be equipped.&quot;);</span>
+    }
+
+    public InteractionResult unlockRoom(Player player, com.example.haunted.model.Direction direction) {
+<span class="fc" id="L72">        Room currentRoom = player.getCurrentRoom();</span>
+<span class="fc" id="L73">        Room targetRoom = currentRoom.getExit(direction);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (targetRoom == null) {</span>
+<span class="fc" id="L75">            return new InteractionResult(false, &quot;There is no room in that direction.&quot;);</span>
+        }
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        if (!targetRoom.isLocked()) {</span>
+<span class="fc" id="L78">            return new InteractionResult(true, &quot;The room is already unlocked.&quot;);</span>
+        }
+<span class="fc" id="L80">        String requiredKeyName = targetRoom.getRequiredKeyName();</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (requiredKeyName == null) {</span>
+<span class="fc" id="L82">            return new InteractionResult(false, &quot;The room cannot be unlocked.&quot;);</span>
+        }
+<span class="fc" id="L84">        Optional&lt;Item&gt; key = player.getInventory().findItem(requiredKeyName);</span>
+<span class="fc bfc" id="L85" title="All 4 branches covered.">        if (key.isEmpty() || !(key.get() instanceof Key)) {</span>
+<span class="fc" id="L86">            return new InteractionResult(false, &quot;You do not have the correct key.&quot;);</span>
+        }
+<span class="fc" id="L88">        targetRoom.unlock(requiredKeyName);</span>
+<span class="fc" id="L89">        return new InteractionResult(true, &quot;Unlocked &quot; + targetRoom.getName() + &quot;.&quot;);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

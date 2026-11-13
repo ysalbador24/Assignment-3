@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>PotionTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.potion.test</a> &gt; <span class="el_source">PotionTest.java</span></div><h1>PotionTest.java</h1><pre class="source lang-java linenums">
+package com.example.haunted.potion.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.example.haunted.model.Inventory;
+import com.example.haunted.model.Player;
+import com.example.haunted.model.Potion;
+
+<span class="fc" id="L13">class PotionTest {</span>
+
+    private Player player;
+
+    @BeforeEach
+    void setUp() {
+<span class="fc" id="L19">        player = new Player(&quot;Bob&quot;, 100, 10, 5, new Inventory(10));</span>
+<span class="fc" id="L20">    }</span>
+
+    @Test
+    void potionStoresCorrectHealingAmount() {
+<span class="fc" id="L24">        Potion potion = new Potion(&quot;Healing Potion&quot;, &quot;Restores health.&quot;, 20);</span>
+
+<span class="fc" id="L26">        assertEquals(20, potion.getHealingAmount());</span>
+<span class="fc" id="L27">    }</span>
+
+    @Test
+    void potionRestoresPlayerHealth() {
+<span class="fc" id="L31">        Potion potion = new Potion(&quot;Healing Potion&quot;, &quot;Restores health.&quot;, 10);</span>
+
+<span class="fc" id="L33">        player.takeDamage(30);</span>
+<span class="fc" id="L34">        potion.use(player);</span>
+
+<span class="fc" id="L36">        assertEquals(80, player.getHealth());</span>
+<span class="fc" id="L37">    }</span>
+
+    @Test
+    void potionCannotHealBeyondMaximumHealth() {
+<span class="fc" id="L41">        Potion potion = new Potion(&quot;Healing Potion&quot;, &quot;Restores health.&quot;, 20);</span>
+
+<span class="fc" id="L43">        player.takeDamage(10);</span>
+<span class="fc" id="L44">        potion.use(player);</span>
+
+<span class="fc" id="L46">        assertEquals(100, player.getHealth());</span>
+<span class="fc" id="L47">    }</span>
+
+    @Test
+    void potionUsedAtFullHealthDoesNotIncreaseHealth() {
+<span class="fc" id="L51">        Potion potion = new Potion(&quot;Healing Potion&quot;, &quot;Restores health.&quot;, 20);</span>
+
+<span class="fc" id="L53">        potion.use(player);</span>
+
+<span class="fc" id="L55">        assertEquals(100, player.getHealth());</span>
+<span class="fc" id="L56">    }</span>
+
+    @Test
+    void zeroHealingPotionDoesNotChangePlayerHealth() {
+<span class="fc" id="L60">        Potion potion = new Potion(&quot;Weak Potion&quot;, &quot;Provides no healing.&quot;, 0);</span>
+
+<span class="fc" id="L62">        player.takeDamage(30);</span>
+<span class="fc" id="L63">        potion.use(player);</span>
+
+<span class="fc" id="L65">        assertEquals(70, player.getHealth());</span>
+<span class="fc" id="L66">    }</span>
+
+    @Test
+    void potionOnlyHealsThePlayerItIsUsedOn() {
+<span class="fc" id="L70">        Potion potion = new Potion(&quot;Healing Potion&quot;, &quot;Restores health.&quot;, 20);</span>
+
+<span class="fc" id="L72">        Player secondPlayer = new Player(</span>
+<span class="fc" id="L73">            &quot;Jerry&quot;, 100, 10, 5, new Inventory(10)</span>
+        );
+
+<span class="fc" id="L76">        player.takeDamage(30);</span>
+<span class="fc" id="L77">        secondPlayer.takeDamage(50);</span>
+
+<span class="fc" id="L79">        potion.use(player);</span>
+
+<span class="fc" id="L81">        assertEquals(90, player.getHealth());</span>
+<span class="fc" id="L82">        assertEquals(50, secondPlayer.getHealth());</span>
+<span class="fc" id="L83">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

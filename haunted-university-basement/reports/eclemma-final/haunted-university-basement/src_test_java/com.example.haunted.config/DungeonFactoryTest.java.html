@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>DungeonFactoryTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.config</a> &gt; <span class="el_source">DungeonFactoryTest.java</span></div><h1>DungeonFactoryTest.java</h1><pre class="source lang-java linenums">package com.example.haunted.config;
+
+import static org.junit.jupiter.api.Assertions.*;
+import com.example.haunted.engine.GameEngine;
+import com.example.haunted.events.MoveResult;
+import com.example.haunted.model.Armor;
+import com.example.haunted.model.BossMonster;
+import com.example.haunted.model.Direction;
+import com.example.haunted.model.Item;
+import com.example.haunted.model.Key;
+import com.example.haunted.model.Monster;
+import com.example.haunted.model.Player;
+import com.example.haunted.model.Potion;
+import com.example.haunted.model.QuestItem;
+import com.example.haunted.model.QuestStatus;
+import com.example.haunted.model.Room;
+import com.example.haunted.model.Trap;
+import com.example.haunted.model.TrapType;
+import com.example.haunted.model.Weapon;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+<span class="fc" id="L27">class DungeonFactoryTest {</span>
+
+    private GameEngine game;
+    private java.util.Map&lt;String, Room&gt; rooms;
+    @BeforeEach
+    void setUp() {
+<span class="fc" id="L33">        game = DungeonFactory.createGame();</span>
+<span class="fc" id="L34">        rooms = new java.util.HashMap&lt;&gt;();</span>
+<span class="fc" id="L35">        java.util.ArrayDeque&lt;Room&gt; pending = new java.util.ArrayDeque&lt;&gt;();</span>
+<span class="fc" id="L36">        pending.add(game.getCurrentRoom());</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        while (!pending.isEmpty()) {</span>
+<span class="fc" id="L38">            Room room = pending.remove();</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            if (rooms.putIfAbsent(room.getId(), room) == null) pending.addAll(room.getExits().values());</span>
+        }
+<span class="fc" id="L41">    }</span>
+    @Test
+    void shouldCreateExpectedStartingPlayerAndQuest() {
+<span class="fc" id="L44">        Player player = game.getPlayer();</span>
+<span class="fc" id="L45">        assertEquals(&quot;Student Explorer&quot;, player.getName());</span>
+<span class="fc" id="L46">        assertEquals(50, player.getHealth());</span>
+<span class="fc" id="L47">        assertEquals(50, player.getMaxHealth());</span>
+<span class="fc" id="L48">        assertEquals(7, player.getBaseAttack());</span>
+<span class="fc" id="L49">        assertEquals(2, player.getBaseDefense());</span>
+<span class="fc" id="L50">        assertEquals(8, player.getInventory().getCapacity());</span>
+<span class="fc" id="L51">        assertTrue(player.getInventory().getItems().isEmpty());</span>
+<span class="fc" id="L52">        assertNull(player.getEquippedArmor());</span>
+<span class="fc" id="L53">        assertNull(player.getEquippedWeapon());</span>
+<span class="fc" id="L54">        assertEquals(&quot;stairwell&quot;, game.getCurrentRoom().getId());</span>
+<span class="fc" id="L55">        assertEquals(&quot;Escape the Basement&quot;, game.getQuest().getName());</span>
+<span class="fc" id="L56">        assertEquals(&quot;Recover the Lost Gradebook and defeat the Final Exam Phantom.&quot;, game.getQuest().getDescription());</span>
+<span class="fc" id="L57">        assertEquals(QuestStatus.NOT_STARTED, game.getQuest().getStatus());</span>
+<span class="fc" id="L58">        assertFalse(game.isGameWon());</span>
+<span class="fc" id="L59">        assertFalse(game.isGameOver());</span>
+<span class="fc" id="L60">    }</span>
+    static Stream&lt;Arguments&gt; roomCases() {
+<span class="fc" id="L62">        return Stream.of(</span>
+<span class="fc" id="L63">            Arguments.of(&quot;stairwell&quot;, &quot;Maintenance Stairwell&quot;, &quot;The flickering stairwell leading into the basement.&quot;, 1, 0, 0, false, null),</span>
+<span class="fc" id="L64">            Arguments.of(&quot;lectureHall&quot;, &quot;Abandoned Lecture Hall&quot;, &quot;Dusty desks and a broken projector.&quot;, 4, 1, 1, false, null),</span>
+<span class="fc" id="L65">            Arguments.of(&quot;labStorage&quot;, &quot;Lab Storage&quot;, &quot;Shelves of outdated hardware and chemicals.&quot;, 2, 2, 0, false, null),</span>
+<span class="fc" id="L66">            Arguments.of(&quot;brokenElevator&quot;, &quot;Broken Elevator&quot;, &quot;The elevator doors hang over a dark shaft.&quot;, 1, 0, 0, false, null),</span>
+<span class="fc" id="L67">            Arguments.of(&quot;serverCloset&quot;, &quot;Server Closet&quot;, &quot;A warm humming room full of blinking servers.&quot;, 2, 1, 1, false, null),</span>
+<span class="fc" id="L68">            Arguments.of(&quot;examArchive&quot;, &quot;Exam Archive&quot;, &quot;Cabinets of old exams and paperwork.&quot;, 2, 1, 1, true, &quot;Archive Key&quot;),</span>
+<span class="fc" id="L69">            Arguments.of(&quot;deanVault&quot;, &quot;Dean Vault&quot;, &quot;A hidden chamber guarded by university secrets.&quot;, 3, 1, 1, false, null),</span>
+<span class="fc" id="L70">            Arguments.of(&quot;finalChamber&quot;, &quot;Final Chamber&quot;, &quot;A spectral exam hall where the boss waits.&quot;, 1, 0, 1, true, &quot;Vault Key&quot;));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;roomCases&quot;)
+    void shouldBuildAllEightRoomsWithExpectedContents(String id, String name, String desc,
+            int exits, int items, int monsters, boolean locked, String key) {
+<span class="fc" id="L76">        assertEquals(8, rooms.size());</span>
+<span class="fc" id="L77">        Room room = rooms.get(id);</span>
+<span class="fc" id="L78">        assertNotNull(room);</span>
+<span class="fc" id="L79">        assertEquals(name, room.getName());</span>
+<span class="fc" id="L80">        assertEquals(desc, room.getDescription());</span>
+<span class="fc" id="L81">        assertEquals(exits, room.getExits().size());</span>
+<span class="fc" id="L82">        assertEquals(items, room.getItems().size());</span>
+<span class="fc" id="L83">        assertEquals(monsters, room.getMonsters().size());</span>
+<span class="fc" id="L84">        assertEquals(locked, room.isLocked());</span>
+<span class="fc" id="L85">        assertEquals(key, room.getRequiredKeyName());</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        if (!id.equals(&quot;brokenElevator&quot;)) assertNull(room.getTrap());</span>
+<span class="fc" id="L87">    }</span>
+    static Stream&lt;Arguments&gt; exitCases() {
+<span class="fc" id="L89">        return Stream.of(</span>
+<span class="fc" id="L90">            Arguments.of(&quot;stairwell&quot;, Direction.EAST, &quot;lectureHall&quot;),</span>
+<span class="fc" id="L91">            Arguments.of(&quot;lectureHall&quot;, Direction.WEST, &quot;stairwell&quot;),</span>
+<span class="fc" id="L92">            Arguments.of(&quot;lectureHall&quot;, Direction.EAST, &quot;labStorage&quot;),</span>
+<span class="fc" id="L93">            Arguments.of(&quot;lectureHall&quot;, Direction.SOUTH, &quot;brokenElevator&quot;),</span>
+<span class="fc" id="L94">            Arguments.of(&quot;lectureHall&quot;, Direction.NORTH, &quot;examArchive&quot;),</span>
+<span class="fc" id="L95">            Arguments.of(&quot;labStorage&quot;, Direction.WEST, &quot;lectureHall&quot;),</span>
+<span class="fc" id="L96">            Arguments.of(&quot;labStorage&quot;, Direction.NORTH, &quot;serverCloset&quot;),</span>
+<span class="fc" id="L97">            Arguments.of(&quot;brokenElevator&quot;, Direction.NORTH, &quot;lectureHall&quot;),</span>
+<span class="fc" id="L98">            Arguments.of(&quot;serverCloset&quot;, Direction.SOUTH, &quot;labStorage&quot;),</span>
+<span class="fc" id="L99">            Arguments.of(&quot;serverCloset&quot;, Direction.EAST, &quot;deanVault&quot;),</span>
+<span class="fc" id="L100">            Arguments.of(&quot;examArchive&quot;, Direction.SOUTH, &quot;lectureHall&quot;),</span>
+<span class="fc" id="L101">            Arguments.of(&quot;examArchive&quot;, Direction.EAST, &quot;deanVault&quot;),</span>
+<span class="fc" id="L102">            Arguments.of(&quot;deanVault&quot;, Direction.WEST, &quot;examArchive&quot;),</span>
+<span class="fc" id="L103">            Arguments.of(&quot;deanVault&quot;, Direction.SOUTH, &quot;serverCloset&quot;),</span>
+<span class="fc" id="L104">            Arguments.of(&quot;deanVault&quot;, Direction.NORTH, &quot;finalChamber&quot;),</span>
+<span class="fc" id="L105">            Arguments.of(&quot;finalChamber&quot;, Direction.SOUTH, &quot;deanVault&quot;));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;exitCases&quot;)
+    void shouldConnectEveryExpectedExit(String from, Direction direction, String to) {
+<span class="fc" id="L110">        assertSame(rooms.get(to), rooms.get(from).getExit(direction));</span>
+<span class="fc" id="L111">    }</span>
+    static Stream&lt;Arguments&gt; itemCases() {
+<span class="fc" id="L113">        return Stream.of(</span>
+<span class="fc" id="L114">            Arguments.of(&quot;lectureHall&quot;, &quot;Coffee Potion&quot;, Potion.class, &quot;A suspiciously warm cup of coffee.&quot;, 15),</span>
+<span class="fc" id="L115">            Arguments.of(&quot;labStorage&quot;, &quot;Archive Key&quot;, Key.class, &quot;Opens the Exam Archive.&quot;, 0),</span>
+<span class="fc" id="L116">            Arguments.of(&quot;labStorage&quot;, &quot;Calculator Shield&quot;, Armor.class, &quot;A battered calculator used as a shield.&quot;, 3),</span>
+<span class="fc" id="L117">            Arguments.of(&quot;serverCloset&quot;, &quot;Stapler of Justice&quot;, Weapon.class, &quot;A heavy-duty stapler with righteous force.&quot;, 4),</span>
+<span class="fc" id="L118">            Arguments.of(&quot;examArchive&quot;, &quot;Lost Gradebook&quot;, QuestItem.class, &quot;The legendary missing gradebook.&quot;, 0),</span>
+<span class="fc" id="L119">            Arguments.of(&quot;deanVault&quot;, &quot;Vault Key&quot;, Key.class, &quot;Opens the Final Chamber.&quot;, 0));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;itemCases&quot;)
+    void shouldPlaceExpectedItems(String roomId, String name, Class&lt;?&gt; type, String description, int bonus) {
+<span class="fc" id="L124">        Item item = rooms.get(roomId).findItem(name).orElseThrow();</span>
+<span class="fc" id="L125">        assertEquals(type, item.getClass());</span>
+<span class="fc" id="L126">        assertEquals(name, item.getName());</span>
+<span class="fc" id="L127">        assertEquals(description, item.getDescription());</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (item instanceof Potion) assertEquals(bonus, ((Potion)item).getHealingAmount());</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        if (item instanceof Weapon) assertEquals(bonus, ((Weapon)item).getAttackBonus());</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">        if (item instanceof Armor) assertEquals(bonus, ((Armor)item).getDefenseBonus());</span>
+<span class="fc" id="L131">    }</span>
+    static Stream&lt;Arguments&gt; monsterCases() {
+<span class="fc" id="L133">        return Stream.of(</span>
+<span class="fc" id="L134">            Arguments.of(&quot;lectureHall&quot;, &quot;Sleep-Deprived TA&quot;,18,6,1,&quot;Coffee Potion&quot;,&quot;A backup coffee drop.&quot;,15),</span>
+<span class="fc" id="L135">            Arguments.of(&quot;serverCloset&quot;, &quot;Spreadsheet Golem&quot;,28,7,4,&quot;Dry Erase Sword&quot;,&quot;An improvised marker tray blade.&quot;,6),</span>
+<span class="fc" id="L136">            Arguments.of(&quot;examArchive&quot;, &quot;Plagiarism Ghost&quot;,22,8,2,null,null,0),</span>
+<span class="fc" id="L137">            Arguments.of(&quot;deanVault&quot;, &quot;Registrar Wraith&quot;,30,9,3,&quot;Graduation Gown Armor&quot;,&quot;Ceremonial robes with uncanny resilience.&quot;,5),</span>
+<span class="fc" id="L138">            Arguments.of(&quot;finalChamber&quot;, &quot;Final Exam Phantom&quot;,40,10,4,null,null,0));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;monsterCases&quot;)
+    void shouldPlaceMonstersWithExpectedStatsAndLoot(String roomId, String name, int hp,
+            int attack, int defense, String lootName, String lootDescription, int bonus) {
+<span class="fc" id="L144">        Monster monster = rooms.get(roomId).findMonster(name).orElseThrow();</span>
+<span class="fc" id="L145">        assertEquals(name, monster.getName());</span>
+<span class="fc" id="L146">        assertEquals(hp, monster.getHealth());</span>
+<span class="fc" id="L147">        assertEquals(hp, monster.getMaxHealth());</span>
+<span class="fc" id="L148">        assertEquals(attack, monster.getAttack());</span>
+<span class="fc" id="L149">        assertEquals(defense, monster.getDefense());</span>
+<span class="fc" id="L150">        assertTrue(monster.isAlive());</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">        assertEquals(lootName == null ? 0 : 1, monster.getLoot().size());</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">        if (lootName != null) {</span>
+<span class="fc" id="L153">            Item item = monster.getLoot().get(0);</span>
+<span class="fc" id="L154">            assertEquals(lootName, item.getName());</span>
+<span class="fc" id="L155">            assertEquals(lootDescription, item.getDescription());</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">            if (roomId.equals(&quot;lectureHall&quot;)) {</span>
+<span class="fc" id="L157">                assertInstanceOf(Potion.class, item);</span>
+<span class="fc" id="L158">                assertEquals(bonus, ((Potion)item).getHealingAmount());</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">            } else if (roomId.equals(&quot;serverCloset&quot;)) {</span>
+<span class="fc" id="L160">                assertInstanceOf(Weapon.class, item);</span>
+<span class="fc" id="L161">                assertEquals(bonus, ((Weapon)item).getAttackBonus());</span>
+<span class="fc" id="L162">            } else {</span>
+<span class="fc" id="L163">                assertInstanceOf(Armor.class, item);</span>
+<span class="fc" id="L164">                assertEquals(bonus, ((Armor)item).getDefenseBonus());</span>
+            }
+        }
+<span class="fc bfc" id="L167" title="All 2 branches covered.">        if (roomId.equals(&quot;finalChamber&quot;)) {</span>
+<span class="fc" id="L168">            assertInstanceOf(BossMonster.class, monster);</span>
+<span class="fc" id="L169">            BossMonster boss = (BossMonster)monster;</span>
+<span class="fc" id="L170">            assertEquals(10, boss.getCurrentAttack());</span>
+<span class="fc" id="L171">            boss.takeDamage(20);</span>
+<span class="fc" id="L172">            assertEquals(13, boss.getCurrentAttack());</span>
+<span class="fc" id="L173">        } else assertEquals(Monster.class, monster.getClass());</span>
+<span class="fc" id="L174">    }</span>
+    @Test
+    void shouldPlaceArmedOneTimeElectricTrapInElevator() {
+<span class="fc" id="L177">        Trap trap = rooms.get(&quot;brokenElevator&quot;).getTrap();</span>
+<span class="fc" id="L178">        assertNotNull(trap);</span>
+<span class="fc" id="L179">        assertEquals(&quot;Loose Wires Trap&quot;, trap.getName());</span>
+<span class="fc" id="L180">        assertEquals(TrapType.ELECTRIC, trap.getType());</span>
+<span class="fc" id="L181">        assertEquals(8, trap.getDamage());</span>
+<span class="fc" id="L182">        assertTrue(trap.isArmed());</span>
+<span class="fc" id="L183">        assertTrue(trap.isOneTimeTrigger());</span>
+<span class="fc" id="L184">        game.move(Direction.EAST);</span>
+<span class="fc" id="L185">        MoveResult result = game.move(Direction.SOUTH);</span>
+<span class="fc" id="L186">        assertTrue(result.isTrapTriggered());</span>
+<span class="fc" id="L187">        assertEquals(42, game.getPlayer().getHealth());</span>
+<span class="fc" id="L188">        assertFalse(trap.isArmed());</span>
+<span class="fc" id="L189">    }</span>
+    @Test
+    void shouldCreateIndependentGames() {
+<span class="fc" id="L192">        GameEngine second = DungeonFactory.createGame();</span>
+<span class="fc" id="L193">        assertNotSame(game, second);</span>
+<span class="fc" id="L194">        assertNotSame(game.getPlayer(), second.getPlayer());</span>
+<span class="fc" id="L195">        assertNotSame(game.getQuest(), second.getQuest());</span>
+<span class="fc" id="L196">        assertNotSame(game.getCurrentRoom(), second.getCurrentRoom());</span>
+<span class="fc" id="L197">        game.getPlayer().takeDamage(10);</span>
+<span class="fc" id="L198">        game.getQuest().markGradebookRecovered();</span>
+<span class="fc" id="L199">        game.move(Direction.EAST);</span>
+<span class="fc" id="L200">        game.pickUpItem(&quot;Coffee Potion&quot;);</span>
+<span class="fc" id="L201">        assertEquals(50, second.getPlayer().getHealth());</span>
+<span class="fc" id="L202">        assertEquals(QuestStatus.NOT_STARTED, second.getQuest().getStatus());</span>
+<span class="fc" id="L203">        assertEquals(&quot;stairwell&quot;, second.getCurrentRoom().getId());</span>
+<span class="fc" id="L204">        second.move(Direction.EAST);</span>
+<span class="fc" id="L205">        assertTrue(second.getCurrentRoom().findItem(&quot;Coffee Potion&quot;).isPresent());</span>
+<span class="fc" id="L206">    }</span>
+    @Test
+    void shouldAllowCompleteAdventureUsingOnlyPublicGameActions() {
+        // Take equipment and keys before fighting; use coffee when needed.
+<span class="fc" id="L210">        assertTrue(game.move(Direction.EAST).isSuccess());</span>
+<span class="fc" id="L211">        assertTrue(game.pickUpItem(&quot;Coffee Potion&quot;).isSuccess());</span>
+<span class="fc" id="L212">        assertTrue(game.move(Direction.EAST).isSuccess());</span>
+<span class="fc" id="L213">        assertTrue(game.pickUpItem(&quot;Archive Key&quot;).isSuccess());</span>
+<span class="fc" id="L214">        assertTrue(game.pickUpItem(&quot;Calculator Shield&quot;).isSuccess());</span>
+<span class="fc" id="L215">        assertTrue(game.equipItem(&quot;Calculator Shield&quot;).isSuccess());</span>
+<span class="fc" id="L216">        assertTrue(game.move(Direction.NORTH).isSuccess());</span>
+<span class="fc" id="L217">        assertTrue(game.pickUpItem(&quot;Stapler of Justice&quot;).isSuccess());</span>
+<span class="fc" id="L218">        assertTrue(game.equipItem(&quot;Stapler of Justice&quot;).isSuccess());</span>
+<span class="fc bfc" id="L219" title="All 2 branches covered.">        for (int i = 0; i &lt; 4; i++) assertTrue(game.attack(&quot;Spreadsheet Golem&quot;).isSuccess());</span>
+<span class="fc" id="L220">        assertFalse(game.getCurrentRoom().findMonster(&quot;Spreadsheet Golem&quot;).orElseThrow().isAlive());</span>
+<span class="fc" id="L221">        assertTrue(game.pickUpItem(&quot;Dry Erase Sword&quot;).isSuccess());</span>
+<span class="fc" id="L222">        assertTrue(game.equipItem(&quot;Dry Erase Sword&quot;).isSuccess());</span>
+<span class="fc" id="L223">        game.move(Direction.SOUTH);</span>
+<span class="fc" id="L224">        game.move(Direction.WEST);</span>
+<span class="fc" id="L225">        assertTrue(game.unlockRoom(Direction.NORTH).isSuccess());</span>
+<span class="fc" id="L226">        assertTrue(game.move(Direction.NORTH).isSuccess());</span>
+<span class="fc" id="L227">        assertTrue(game.pickUpItem(&quot;Lost Gradebook&quot;).isSuccess());</span>
+<span class="fc" id="L228">        assertEquals(QuestStatus.IN_PROGRESS, game.getQuest().getStatus());</span>
+<span class="fc" id="L229">        assertTrue(game.move(Direction.EAST).isSuccess());</span>
+<span class="fc" id="L230">        assertTrue(game.pickUpItem(&quot;Vault Key&quot;).isSuccess());</span>
+<span class="fc bfc" id="L231" title="All 2 branches covered.">        for (int i = 0; i &lt; 3; i++) assertTrue(game.attack(&quot;Registrar Wraith&quot;).isSuccess());</span>
+<span class="fc" id="L232">        assertTrue(game.pickUpItem(&quot;Graduation Gown Armor&quot;).isSuccess());</span>
+<span class="fc" id="L233">        assertTrue(game.equipItem(&quot;Graduation Gown Armor&quot;).isSuccess());</span>
+<span class="fc" id="L234">        assertTrue(game.useItem(&quot;Coffee Potion&quot;).isSuccess());</span>
+<span class="fc" id="L235">        assertTrue(game.unlockRoom(Direction.NORTH).isSuccess());</span>
+<span class="fc" id="L236">        assertTrue(game.move(Direction.NORTH).isSuccess());</span>
+<span class="fc bfc" id="L237" title="All 2 branches covered.">        for (int i = 0; i &lt; 5; i++) assertTrue(game.attack(&quot;Final Exam Phantom&quot;).isSuccess());</span>
+<span class="fc" id="L238">        assertTrue(game.getQuest().isGradebookRecovered());</span>
+<span class="fc" id="L239">        assertTrue(game.getQuest().isPhantomDefeated());</span>
+<span class="fc" id="L240">        assertTrue(game.isGameWon());</span>
+<span class="fc" id="L241">        assertFalse(game.isGameOver());</span>
+<span class="fc" id="L242">        assertEquals(QuestStatus.COMPLETED, game.getQuest().getStatus());</span>
+<span class="fc" id="L243">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

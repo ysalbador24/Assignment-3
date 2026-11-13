@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>MovementEngineTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.engine</a> &gt; <span class="el_source">MovementEngineTest.java</span></div><h1>MovementEngineTest.java</h1><pre class="source lang-java linenums">package com.example.haunted.engine;
+
+import static org.junit.jupiter.api.Assertions.*;
+import com.example.haunted.events.MoveResult;
+import com.example.haunted.model.Direction;
+import com.example.haunted.model.Inventory;
+import com.example.haunted.model.Player;
+import com.example.haunted.model.Room;
+import com.example.haunted.model.Trap;
+import com.example.haunted.model.TrapType;
+import com.example.haunted.rules.TrapResolver;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+<span class="fc" id="L20">class MovementEngineTest {</span>
+
+    private Player player;
+    private Room start;
+    private Room next;
+    private MovementEngine engine;
+    @BeforeEach
+    void setUp() {
+<span class="fc" id="L28">        start = new Room(&quot;start&quot;, &quot;Start&quot;, &quot;Start room&quot;);</span>
+<span class="fc" id="L29">        next = new Room(&quot;next&quot;, &quot;Next&quot;, &quot;Next room&quot;);</span>
+<span class="fc" id="L30">        player = new Player(&quot;Student&quot;, 20, 7, 2, new Inventory(8));</span>
+<span class="fc" id="L31">        player.setCurrentRoom(start);</span>
+<span class="fc" id="L32">        engine = new MovementEngine(new TrapResolver());</span>
+<span class="fc" id="L33">    }</span>
+<span class="fc" id="L34">    static Stream&lt;Direction&gt; directions() { return Stream.of(Direction.values()); }</span>
+    @ParameterizedTest
+    @MethodSource(&quot;directions&quot;)
+    void shouldMoveThroughEachConnectedExit(Direction direction) {
+<span class="fc" id="L38">        start.connect(direction, next);</span>
+<span class="fc" id="L39">        MoveResult result = engine.move(player, direction);</span>
+<span class="fc" id="L40">        assertTrue(result.isSuccess());</span>
+<span class="fc" id="L41">        assertSame(next, player.getCurrentRoom());</span>
+<span class="fc" id="L42">        assertEquals(&quot;Moved to Next.&quot;, result.getMessage());</span>
+<span class="fc" id="L43">        assertFalse(result.isTrapTriggered());</span>
+<span class="fc" id="L44">        assertEquals(0, result.getTrapDamage());</span>
+<span class="fc" id="L45">        assertEquals(20, player.getHealth());</span>
+<span class="fc" id="L46">    }</span>
+    @ParameterizedTest
+    @MethodSource(&quot;directions&quot;)
+    void shouldStayInCurrentRoomWhenExitIsMissing(Direction direction) {
+<span class="fc" id="L50">        MoveResult result = engine.move(player, direction);</span>
+<span class="fc" id="L51">        assertFalse(result.isSuccess());</span>
+<span class="fc" id="L52">        assertEquals(&quot;There is no room in that direction.&quot;, result.getMessage());</span>
+<span class="fc" id="L53">        assertSame(start, player.getCurrentRoom());</span>
+<span class="fc" id="L54">        assertFalse(result.isTrapTriggered());</span>
+<span class="fc" id="L55">        assertEquals(0, result.getTrapDamage());</span>
+<span class="fc" id="L56">        assertEquals(20, player.getHealth());</span>
+<span class="fc" id="L57">    }</span>
+    @Test
+    void shouldNotMoveOrTriggerTrapInLockedRoom() {
+<span class="fc" id="L60">        start.connect(Direction.EAST, next);</span>
+<span class="fc" id="L61">        next.setLocked(true, &quot;Key&quot;);</span>
+<span class="fc" id="L62">        Trap trap = new Trap(&quot;Wire&quot;, TrapType.ELECTRIC, 8, true, true);</span>
+<span class="fc" id="L63">        next.setTrap(trap);</span>
+<span class="fc" id="L64">        MoveResult result = engine.move(player, Direction.EAST);</span>
+<span class="fc" id="L65">        assertFalse(result.isSuccess());</span>
+<span class="fc" id="L66">        assertEquals(&quot;The room is locked.&quot;, result.getMessage());</span>
+<span class="fc" id="L67">        assertSame(start, player.getCurrentRoom());</span>
+<span class="fc" id="L68">        assertFalse(result.isTrapTriggered());</span>
+<span class="fc" id="L69">        assertEquals(0, result.getTrapDamage());</span>
+<span class="fc" id="L70">        assertEquals(20, player.getHealth());</span>
+<span class="fc" id="L71">        assertTrue(trap.isArmed());</span>
+<span class="fc" id="L72">        assertTrue(next.isLocked());</span>
+<span class="fc" id="L73">    }</span>
+    @Test
+    void shouldMoveWithoutTriggeringDisarmedTrap() {
+<span class="fc" id="L76">        start.connect(Direction.EAST, next);</span>
+<span class="fc" id="L77">        next.setTrap(new Trap(&quot;Wire&quot;, TrapType.ELECTRIC, 8, false, true));</span>
+<span class="fc" id="L78">        MoveResult result = engine.move(player, Direction.EAST);</span>
+<span class="fc" id="L79">        assertTrue(result.isSuccess());</span>
+<span class="fc" id="L80">        assertSame(next, player.getCurrentRoom());</span>
+<span class="fc" id="L81">        assertEquals(&quot;Moved to Next.&quot;, result.getMessage());</span>
+<span class="fc" id="L82">        assertFalse(result.isTrapTriggered());</span>
+<span class="fc" id="L83">        assertEquals(0, result.getTrapDamage());</span>
+<span class="fc" id="L84">        assertEquals(20, player.getHealth());</span>
+<span class="fc" id="L85">    }</span>
+    static Stream&lt;Arguments&gt; entryCases() {
+<span class="fc" id="L87">        return Stream.of(Arguments.of(0,20), Arguments.of(8,12), Arguments.of(20,0), Arguments.of(25,0));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;entryCases&quot;)
+    void shouldEnterAndReportTrapDamageEvenWhenLethal(int damage, int expectedHealth) {
+<span class="fc" id="L92">        start.connect(Direction.EAST, next);</span>
+<span class="fc" id="L93">        Trap trap = new Trap(&quot;Wire&quot;, TrapType.ELECTRIC, damage, true, true);</span>
+<span class="fc" id="L94">        next.setTrap(trap);</span>
+<span class="fc" id="L95">        MoveResult result = engine.move(player, Direction.EAST);</span>
+<span class="fc" id="L96">        assertTrue(result.isSuccess());</span>
+<span class="fc" id="L97">        assertSame(next, player.getCurrentRoom());</span>
+<span class="fc" id="L98">        assertTrue(result.isTrapTriggered());</span>
+<span class="fc" id="L99">        assertEquals(damage, result.getTrapDamage());</span>
+<span class="fc" id="L100">        assertEquals(&quot;Moved to Next. Trap 'Wire' triggered for &quot; + damage + &quot; damage.&quot;, result.getMessage());</span>
+<span class="fc" id="L101">        assertEquals(expectedHealth, player.getHealth());</span>
+<span class="fc" id="L102">        assertFalse(trap.isArmed());</span>
+<span class="fc" id="L103">    }</span>
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean oneTime) {
+<span class="fc" id="L107">        start.connect(Direction.EAST, next);</span>
+<span class="fc" id="L108">        next.connect(Direction.WEST, start);</span>
+<span class="fc" id="L109">        Trap trap = new Trap(&quot;Wire&quot;, TrapType.ELECTRIC, 3, true, oneTime);</span>
+<span class="fc" id="L110">        next.setTrap(trap);</span>
+<span class="fc" id="L111">        engine.move(player, Direction.EAST);</span>
+<span class="fc" id="L112">        assertEquals(17, player.getHealth());</span>
+<span class="fc" id="L113">        engine.move(player, Direction.WEST);</span>
+<span class="fc" id="L114">        MoveResult second = engine.move(player, Direction.EAST);</span>
+<span class="fc" id="L115">        assertTrue(second.isSuccess());</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">        assertEquals(!oneTime, second.isTrapTriggered());</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        assertEquals(oneTime ? 0 : 3, second.getTrapDamage());</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">        assertEquals(oneTime ? 17 : 14, player.getHealth());</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        assertEquals(!oneTime, trap.isArmed());</span>
+<span class="fc" id="L120">        assertSame(next, player.getCurrentRoom());</span>
+<span class="fc" id="L121">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

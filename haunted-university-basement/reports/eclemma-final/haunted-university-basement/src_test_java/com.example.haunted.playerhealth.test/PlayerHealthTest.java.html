@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>PlayerHealthTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.playerhealth.test</a> &gt; <span class="el_source">PlayerHealthTest.java</span></div><h1>PlayerHealthTest.java</h1><pre class="source lang-java linenums">package com.example.haunted.playerhealth.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import com.example.haunted.model.Inventory;
+import com.example.haunted.model.Player;
+import com.example.haunted.model.Weapon;
+import com.example.haunted.model.Armor;
+
+<span class="fc" id="L15">class PlayerHealthTest {</span>
+
+	private Player player;
+	
+	@BeforeEach
+	void setUp() {
+<span class="fc" id="L21">		player = new Player(&quot;Bob&quot;, 100, 10, 5, new Inventory(10));</span>
+<span class="fc" id="L22">	}</span>
+	
+	@ParameterizedTest
+	@CsvSource({
+		&quot;1, 99&quot;,
+		&quot;25, 75&quot;,
+		&quot;100, 0&quot;,
+		&quot;150, 0&quot;
+	})
+    void playerTakesDamage(int damage, int expectedHealth) {
+<span class="fc" id="L32">        player.takeDamage(damage);</span>
+
+<span class="fc" id="L34">        assertEquals(expectedHealth, player.getHealth()); // player takes damage should equal expectedHealth</span>
+<span class="fc" id="L35">    }</span>
+
+    @Test
+    void playerCannotHaveNegativeHealth() {
+<span class="fc" id="L39">        player.takeDamage(150);</span>
+
+<span class="fc" id="L41">        assertEquals(0, player.getHealth()); // health should be 0</span>
+<span class="fc" id="L42">        assertFalse(player.isAlive()); // player should be dead</span>
+<span class="fc" id="L43">    }</span>
+
+    @ParameterizedTest
+    @CsvSource({
+    	&quot;10, 70&quot;,
+    	&quot;40, 100&quot;,
+    	&quot;80, 100&quot;
+    })
+    void playerCanHealWithoutExceedingMaximum(int healing, int expectedHealth) {
+<span class="fc" id="L52">        player.takeDamage(40);</span>
+
+<span class="fc" id="L54">        player.heal(healing); // heals for 10, 40, 80</span>
+
+<span class="fc" id="L56">        assertEquals(expectedHealth, player.getHealth());</span>
+<span class="fc" id="L57">    }</span>
+
+    @Test
+    void negativeDamageDoesNotReduceHealth() {
+<span class="fc" id="L61">        player.takeDamage(-10);</span>
+
+<span class="fc" id="L63">        assertEquals(100, player.getHealth());</span>
+<span class="fc" id="L64">    }</span>
+
+    @Test
+    void negativeHealingDoesNotIncreaseHealth() {
+<span class="fc" id="L68">        player.takeDamage(20);</span>
+<span class="fc" id="L69">        player.heal(-10);</span>
+
+<span class="fc" id="L71">        assertEquals(80, player.getHealth());</span>
+<span class="fc" id="L72">    }</span>
+    
+    @Test
+    void zeroDamageDoesNotChangeHealth() {
+<span class="fc" id="L76">    	player.takeDamage(0);</span>
+    	
+<span class="fc" id="L78">    	assertEquals(100, player.getHealth());</span>
+    	
+<span class="fc" id="L80">    	player.takeDamage(-0);</span>
+    	
+<span class="fc" id="L82">    	assertEquals(100, player.getHealth());</span>
+<span class="fc" id="L83">    }</span>
+    
+    @Test
+    void equippingWeaponIncreasesAttackPower() {
+<span class="fc" id="L87">    	Weapon weapon = new Weapon(&quot;Sword&quot;, &quot;A sharp sword.&quot;, 15);</span>
+    	
+<span class="fc" id="L89">    	assertEquals(10, player.getAttackPower());</span>
+    	
+<span class="fc" id="L91">    	player.equipWeapon(weapon);</span>
+    	
+<span class="fc" id="L93">    	assertEquals(25, player.getAttackPower());</span>
+<span class="fc" id="L94">    }</span>
+    
+    @Test
+    void equippingArmorIncreasesDefensePower() {
+<span class="fc" id="L98">    	Armor armor = new Armor(&quot;Shield&quot;, &quot;A sturdy shield.&quot;, 10);</span>
+    	
+<span class="fc" id="L100">    	assertEquals(5, player.getDefensePower());</span>
+    	
+<span class="fc" id="L102">    	player.equipArmor(armor);</span>
+    	
+<span class="fc" id="L104">    	assertEquals(15, player.getDefensePower());</span>
+<span class="fc" id="L105">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

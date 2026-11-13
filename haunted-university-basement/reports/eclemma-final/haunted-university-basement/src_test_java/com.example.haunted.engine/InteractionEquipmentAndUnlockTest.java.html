@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>InteractionEquipmentAndUnlockTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.engine</a> &gt; <span class="el_source">InteractionEquipmentAndUnlockTest.java</span></div><h1>InteractionEquipmentAndUnlockTest.java</h1><pre class="source lang-java linenums">package com.example.haunted.engine;
+
+import static org.junit.jupiter.api.Assertions.*;
+import com.example.haunted.events.InteractionResult;
+import com.example.haunted.model.Armor;
+import com.example.haunted.model.Direction;
+import com.example.haunted.model.Inventory;
+import com.example.haunted.model.Item;
+import com.example.haunted.model.Key;
+import com.example.haunted.model.Player;
+import com.example.haunted.model.Potion;
+import com.example.haunted.model.QuestItem;
+import com.example.haunted.model.Room;
+import com.example.haunted.model.Weapon;
+import com.example.haunted.rules.QuestTracker;
+import java.util.List;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+<span class="fc" id="L25">class InteractionEquipmentAndUnlockTest {</span>
+
+    private Player player;
+    private Room current;
+    private Room target;
+    private InteractionEngine engine;
+    @BeforeEach
+    void setUp() {
+<span class="fc" id="L33">        player = new Player(&quot;Student&quot;, 50, 7, 2, new Inventory(8));</span>
+<span class="fc" id="L34">        current = new Room(&quot;current&quot;, &quot;Current&quot;, &quot;Current room&quot;);</span>
+<span class="fc" id="L35">        target = new Room(&quot;archive&quot;, &quot;Archive&quot;, &quot;Locked room&quot;);</span>
+<span class="fc" id="L36">        current.connect(Direction.NORTH, target);</span>
+<span class="fc" id="L37">        player.setCurrentRoom(current);</span>
+<span class="fc" id="L38">        engine = new InteractionEngine(new QuestTracker());</span>
+<span class="fc" id="L39">    }</span>
+    @Test
+    void shouldEquipAndReplaceWeaponWithoutConsumingIt() {
+<span class="fc" id="L42">        Weapon first = new Weapon(&quot;Sword&quot;, &quot;First&quot;, 4);</span>
+<span class="fc" id="L43">        Weapon second = new Weapon(&quot;Stapler&quot;, &quot;Second&quot;, 6);</span>
+<span class="fc" id="L44">        player.getInventory().addItem(first);</span>
+<span class="fc" id="L45">        player.getInventory().addItem(second);</span>
+<span class="fc" id="L46">        InteractionResult result = engine.equipItem(player, &quot;sWoRd&quot;);</span>
+<span class="fc" id="L47">        assertTrue(result.isSuccess());</span>
+<span class="fc" id="L48">        assertEquals(&quot;Equipped weapon Sword.&quot;, result.getMessage());</span>
+<span class="fc" id="L49">        assertSame(first, player.getEquippedWeapon());</span>
+<span class="fc" id="L50">        assertEquals(11, player.getAttackPower());</span>
+<span class="fc" id="L51">        assertEquals(2, player.getDefensePower());</span>
+<span class="fc" id="L52">        assertNull(player.getEquippedArmor());</span>
+<span class="fc" id="L53">        assertEquals(List.of(first, second), player.getInventory().getItems());</span>
+<span class="fc" id="L54">        assertTrue(engine.equipItem(player, &quot;Stapler&quot;).isSuccess());</span>
+<span class="fc" id="L55">        assertSame(second, player.getEquippedWeapon());</span>
+<span class="fc" id="L56">        assertEquals(13, player.getAttackPower());</span>
+<span class="fc" id="L57">    }</span>
+    @Test
+    void shouldEquipAndReplaceArmorWithoutConsumingIt() {
+<span class="fc" id="L60">        Armor first = new Armor(&quot;Shield&quot;, &quot;First&quot;, 3);</span>
+<span class="fc" id="L61">        Armor second = new Armor(&quot;Gown&quot;, &quot;Second&quot;, 5);</span>
+<span class="fc" id="L62">        player.getInventory().addItem(first);</span>
+<span class="fc" id="L63">        player.getInventory().addItem(second);</span>
+<span class="fc" id="L64">        InteractionResult result = engine.equipItem(player, &quot;sHiElD&quot;);</span>
+<span class="fc" id="L65">        assertTrue(result.isSuccess());</span>
+<span class="fc" id="L66">        assertEquals(&quot;Equipped armor Shield.&quot;, result.getMessage());</span>
+<span class="fc" id="L67">        assertSame(first, player.getEquippedArmor());</span>
+<span class="fc" id="L68">        assertEquals(5, player.getDefensePower());</span>
+<span class="fc" id="L69">        assertEquals(7, player.getAttackPower());</span>
+<span class="fc" id="L70">        assertNull(player.getEquippedWeapon());</span>
+<span class="fc" id="L71">        assertEquals(List.of(first, second), player.getInventory().getItems());</span>
+<span class="fc" id="L72">        assertTrue(engine.equipItem(player, &quot;Gown&quot;).isSuccess());</span>
+<span class="fc" id="L73">        assertSame(second, player.getEquippedArmor());</span>
+<span class="fc" id="L74">        assertEquals(7, player.getDefensePower());</span>
+<span class="fc" id="L75">    }</span>
+    static Stream&lt;Item&gt; unequippableItems() {
+<span class="fc" id="L77">        return Stream.of(new Key(&quot;Key&quot;, &quot;Key&quot;), new Potion(&quot;Potion&quot;, &quot;Potion&quot;, 5),</span>
+<span class="fc" id="L78">            new QuestItem(&quot;Book&quot;, &quot;Book&quot;));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;unequippableItems&quot;)
+    void shouldRejectUnequippableItemsAndPreserveEquipment(Item item) {
+<span class="fc" id="L83">        Weapon weapon = new Weapon(&quot;Sword&quot;, &quot;Sword&quot;, 4);</span>
+<span class="fc" id="L84">        Armor armor = new Armor(&quot;Shield&quot;, &quot;Shield&quot;, 3);</span>
+<span class="fc" id="L85">        player.equipWeapon(weapon);</span>
+<span class="fc" id="L86">        player.equipArmor(armor);</span>
+<span class="fc" id="L87">        player.getInventory().addItem(item);</span>
+<span class="fc" id="L88">        InteractionResult result = engine.equipItem(player, item.getName());</span>
+<span class="fc" id="L89">        assertFalse(result.isSuccess());</span>
+<span class="fc" id="L90">        assertEquals(&quot;That item cannot be equipped.&quot;, result.getMessage());</span>
+<span class="fc" id="L91">        assertSame(weapon, player.getEquippedWeapon());</span>
+<span class="fc" id="L92">        assertSame(armor, player.getEquippedArmor());</span>
+<span class="fc" id="L93">        assertEquals(List.of(item), player.getInventory().getItems());</span>
+<span class="fc" id="L94">    }</span>
+    @Test
+    void shouldRejectMissingEquipment() {
+<span class="fc" id="L97">        InteractionResult result = engine.equipItem(player, &quot;Missing&quot;);</span>
+<span class="fc" id="L98">        assertFalse(result.isSuccess());</span>
+<span class="fc" id="L99">        assertEquals(&quot;Item not found in inventory.&quot;, result.getMessage());</span>
+<span class="fc" id="L100">        assertNull(player.getEquippedWeapon());</span>
+<span class="fc" id="L101">        assertNull(player.getEquippedArmor());</span>
+<span class="fc" id="L102">        assertTrue(player.getInventory().getItems().isEmpty());</span>
+<span class="fc" id="L103">    }</span>
+    @Test
+    void shouldRejectMissingExitWithoutMoving() {
+<span class="fc" id="L106">        InteractionResult result = engine.unlockRoom(player, Direction.SOUTH);</span>
+<span class="fc" id="L107">        assertFalse(result.isSuccess());</span>
+<span class="fc" id="L108">        assertEquals(&quot;There is no room in that direction.&quot;, result.getMessage());</span>
+<span class="fc" id="L109">        assertSame(current, player.getCurrentRoom());</span>
+<span class="fc" id="L110">    }</span>
+    @Test
+    void shouldAcceptAlreadyUnlockedRoomWithoutKey() {
+<span class="fc" id="L113">        InteractionResult result = engine.unlockRoom(player, Direction.NORTH);</span>
+<span class="fc" id="L114">        assertTrue(result.isSuccess());</span>
+<span class="fc" id="L115">        assertEquals(&quot;The room is already unlocked.&quot;, result.getMessage());</span>
+<span class="fc" id="L116">        assertFalse(target.isLocked());</span>
+<span class="fc" id="L117">        assertSame(current, player.getCurrentRoom());</span>
+<span class="fc" id="L118">    }</span>
+    @Test
+    void shouldRejectLockedRoomWithoutRequiredKeyName() {
+<span class="fc" id="L121">        target.setLocked(true, null);</span>
+<span class="fc" id="L122">        InteractionResult result = engine.unlockRoom(player, Direction.NORTH);</span>
+<span class="fc" id="L123">        assertFalse(result.isSuccess());</span>
+<span class="fc" id="L124">        assertEquals(&quot;The room cannot be unlocked.&quot;, result.getMessage());</span>
+<span class="fc" id="L125">        assertTrue(target.isLocked());</span>
+<span class="fc" id="L126">    }</span>
+    static Stream&lt;Arguments&gt; wrongKeys() {
+<span class="fc" id="L128">        return Stream.of(Arguments.of((Item)null), Arguments.of(new Key(&quot;Wrong Key&quot;, &quot;Wrong&quot;)),</span>
+<span class="fc" id="L129">            Arguments.of(new Potion(&quot;Archive Key&quot;, &quot;Not a key&quot;, 5)),</span>
+<span class="fc" id="L130">            Arguments.of(new QuestItem(&quot;Archive Key&quot;, &quot;Not a key&quot;)));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;wrongKeys&quot;)
+    void shouldRejectMissingWrongAndNonKeyItems(Item item) {
+<span class="fc" id="L135">        target.setLocked(true, &quot;Archive Key&quot;);</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">        if (item != null) player.getInventory().addItem(item);</span>
+<span class="fc" id="L137">        InteractionResult result = engine.unlockRoom(player, Direction.NORTH);</span>
+<span class="fc" id="L138">        assertFalse(result.isSuccess());</span>
+<span class="fc" id="L139">        assertEquals(&quot;You do not have the correct key.&quot;, result.getMessage());</span>
+<span class="fc" id="L140">        assertTrue(target.isLocked());</span>
+<span class="fc" id="L141">        assertSame(current, player.getCurrentRoom());</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        assertEquals(item == null ? 0 : 1, player.getInventory().getItems().size());</span>
+<span class="fc" id="L143">    }</span>
+    @ParameterizedTest
+    @ValueSource(strings = {&quot;Archive Key&quot;, &quot;archive key&quot;, &quot;ARCHIVE KEY&quot;})
+    void shouldUnlockWithCorrectKeyWithoutConsumingOrMoving(String name) {
+<span class="fc" id="L147">        target.setLocked(true, &quot;Archive Key&quot;);</span>
+<span class="fc" id="L148">        Key key = new Key(name, &quot;Opens archive&quot;);</span>
+<span class="fc" id="L149">        player.getInventory().addItem(key);</span>
+<span class="fc" id="L150">        InteractionResult result = engine.unlockRoom(player, Direction.NORTH);</span>
+<span class="fc" id="L151">        assertTrue(result.isSuccess());</span>
+<span class="fc" id="L152">        assertEquals(&quot;Unlocked Archive.&quot;, result.getMessage());</span>
+<span class="fc" id="L153">        assertFalse(target.isLocked());</span>
+<span class="fc" id="L154">        assertEquals(&quot;Archive Key&quot;, target.getRequiredKeyName());</span>
+<span class="fc" id="L155">        assertEquals(List.of(key), player.getInventory().getItems());</span>
+<span class="fc" id="L156">        assertSame(current, player.getCurrentRoom());</span>
+<span class="fc" id="L157">        assertTrue(engine.unlockRoom(player, Direction.NORTH).isSuccess());</span>
+<span class="fc" id="L158">        assertEquals(List.of(key), player.getInventory().getItems());</span>
+<span class="fc" id="L159">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>GameEngine.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.engine</a> &gt; <span class="el_source">GameEngine.java</span></div><h1>GameEngine.java</h1><pre class="source lang-java linenums">package com.example.haunted.engine;
+
+import com.example.haunted.events.CombatResult;
+import com.example.haunted.events.InteractionResult;
+import com.example.haunted.events.MoveResult;
+import com.example.haunted.model.Direction;
+import com.example.haunted.model.Monster;
+import com.example.haunted.model.Player;
+import com.example.haunted.model.Quest;
+import com.example.haunted.model.Room;
+
+public class GameEngine {
+    private final Player player;
+    private final Quest quest;
+    private final MovementEngine movementEngine;
+    private final CombatEngine combatEngine;
+    private final InteractionEngine interactionEngine;
+
+<span class="fc" id="L19">    public GameEngine(Player player, Quest quest, MovementEngine movementEngine,</span>
+                      CombatEngine combatEngine, InteractionEngine interactionEngine) {
+<span class="fc" id="L21">        this.player = player;</span>
+<span class="fc" id="L22">        this.quest = quest;</span>
+<span class="fc" id="L23">        this.movementEngine = movementEngine;</span>
+<span class="fc" id="L24">        this.combatEngine = combatEngine;</span>
+<span class="fc" id="L25">        this.interactionEngine = interactionEngine;</span>
+<span class="fc" id="L26">    }</span>
+
+    public MoveResult move(Direction direction) {
+<span class="fc" id="L29">        return movementEngine.move(player, direction);</span>
+    }
+
+    public InteractionResult pickUpItem(String itemName) {
+<span class="fc" id="L33">        return interactionEngine.pickUpItem(player, quest, itemName);</span>
+    }
+
+    public InteractionResult equipItem(String itemName) {
+<span class="fc" id="L37">        return interactionEngine.equipItem(player, itemName);</span>
+    }
+
+    public InteractionResult useItem(String itemName) {
+<span class="fc" id="L41">        return interactionEngine.useItem(player, itemName);</span>
+    }
+
+    public InteractionResult unlockRoom(Direction direction) {
+<span class="fc" id="L45">        return interactionEngine.unlockRoom(player, direction);</span>
+    }
+
+    public CombatResult attack(String monsterName) {
+<span class="fc" id="L49">        Monster monster = player.getCurrentRoom().findMonster(monsterName).orElse(null);</span>
+<span class="fc" id="L50">        return combatEngine.attack(player, quest, monster);</span>
+    }
+
+    public Player getPlayer() {
+<span class="fc" id="L54">        return player;</span>
+    }
+
+    public Quest getQuest() {
+<span class="fc" id="L58">        return quest;</span>
+    }
+
+    public Room getCurrentRoom() {
+<span class="fc" id="L62">        return player.getCurrentRoom();</span>
+    }
+
+    public boolean isGameOver() {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        return !player.isAlive();</span>
+    }
+
+    public boolean isGameWon() {
+<span class="fc bfc" id="L70" title="All 4 branches covered.">        return quest.isComplete() &amp;&amp; player.isAlive();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>

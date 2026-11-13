@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>QuestTrackerTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">java (Nov 12, 2026 10:50:39 PM)</a> &gt; <a href="../../index.html" class="el_group">haunted-university-basement</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">com.example.haunted.rules</a> &gt; <span class="el_source">QuestTrackerTest.java</span></div><h1>QuestTrackerTest.java</h1><pre class="source lang-java linenums">package com.example.haunted.rules;
+
+import static org.junit.jupiter.api.Assertions.*;
+import com.example.haunted.model.BossMonster;
+import com.example.haunted.model.Item;
+import com.example.haunted.model.Key;
+import com.example.haunted.model.Monster;
+import com.example.haunted.model.Quest;
+import com.example.haunted.model.QuestItem;
+import com.example.haunted.model.QuestStatus;
+import java.util.List;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+<span class="fc" id="L19">class QuestTrackerTest {</span>
+
+    private Quest quest;
+    private QuestTracker tracker;
+    @BeforeEach
+<span class="fc" id="L24">    void setUp() { quest = new Quest(&quot;Escape&quot;, &quot;Description&quot;); tracker = new QuestTracker(); }</span>
+    static Stream&lt;Arguments&gt; itemCases() {
+<span class="fc" id="L26">        return Stream.of(</span>
+<span class="fc" id="L27">            Arguments.of((Item)null, false),</span>
+<span class="fc" id="L28">            Arguments.of(new QuestItem(&quot;Lost Gradebook&quot;, &quot;Book&quot;), true),</span>
+<span class="fc" id="L29">            Arguments.of(new QuestItem(&quot;lost gradebook&quot;, &quot;Book&quot;), true),</span>
+<span class="fc" id="L30">            Arguments.of(new Key(&quot;LOST GRADEBOOK&quot;, &quot;Name determines progress&quot;), true),</span>
+<span class="fc" id="L31">            Arguments.of(new QuestItem(&quot;Other Book&quot;, &quot;Unrelated&quot;), false));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;itemCases&quot;)
+    void shouldOnlyRecordItemsWithGradebookName(Item item, boolean expected) {
+<span class="fc" id="L36">        tracker.updateQuestForItem(quest, item);</span>
+<span class="fc" id="L37">        assertEquals(expected, quest.isGradebookRecovered());</span>
+<span class="fc" id="L38">        assertFalse(quest.isPhantomDefeated());</span>
+<span class="fc" id="L39">        assertFalse(quest.isComplete());</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        assertEquals(expected ? QuestStatus.IN_PROGRESS : QuestStatus.NOT_STARTED, quest.getStatus());</span>
+<span class="fc" id="L41">    }</span>
+    static Stream&lt;Arguments&gt; monsterCases() {
+<span class="fc" id="L43">        return Stream.of(Arguments.of(null,0,false),</span>
+<span class="fc" id="L44">            Arguments.of(&quot;Final Exam Phantom&quot;, 1, false),</span>
+<span class="fc" id="L45">            Arguments.of(&quot;Final Exam Phantom&quot;, 0, true),</span>
+<span class="fc" id="L46">            Arguments.of(&quot;final exam phantom&quot;, 0, true),</span>
+<span class="fc" id="L47">            Arguments.of(&quot;FINAL EXAM PHANTOM&quot;, 0, true),</span>
+<span class="fc" id="L48">            Arguments.of(&quot;Other Ghost&quot;, 0, false),</span>
+<span class="fc" id="L49">            Arguments.of(&quot;Other Ghost&quot;, 1, false));</span>
+    }
+    @ParameterizedTest
+    @MethodSource(&quot;monsterCases&quot;)
+    void shouldOnlyRecordDefeatedPhantom(String name, int health, boolean expected) {
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        Monster monster = name == null ? null : new Monster(name, health, 1, 0, List.of());</span>
+<span class="fc" id="L55">        tracker.updateQuestForMonster(quest, monster);</span>
+<span class="fc" id="L56">        assertEquals(expected, quest.isPhantomDefeated());</span>
+<span class="fc" id="L57">        assertFalse(quest.isGradebookRecovered());</span>
+<span class="fc" id="L58">        assertFalse(quest.isComplete());</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        assertEquals(expected ? QuestStatus.IN_PROGRESS : QuestStatus.NOT_STARTED, quest.getStatus());</span>
+<span class="fc" id="L60">    }</span>
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void shouldCompleteQuestThroughTrackerInEitherOrder(boolean bookFirst) {
+<span class="fc" id="L64">        Item book = new QuestItem(&quot;Lost Gradebook&quot;, &quot;Book&quot;);</span>
+<span class="fc" id="L65">        Monster boss = new BossMonster(&quot;Final Exam Phantom&quot;, 1, 1, 0, List.of(), 3);</span>
+<span class="fc" id="L66">        boss.takeDamage(1);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (bookFirst) tracker.updateQuestForItem(quest, book);</span>
+<span class="fc" id="L68">        else tracker.updateQuestForMonster(quest, boss);</span>
+<span class="fc" id="L69">        assertEquals(QuestStatus.IN_PROGRESS, quest.getStatus());</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if (bookFirst) tracker.updateQuestForMonster(quest, boss);</span>
+<span class="fc" id="L71">        else tracker.updateQuestForItem(quest, book);</span>
+<span class="fc" id="L72">        assertTrue(quest.isComplete());</span>
+<span class="fc" id="L73">        tracker.updateQuestForItem(quest, null);</span>
+<span class="fc" id="L74">        tracker.updateQuestForMonster(quest, null);</span>
+<span class="fc" id="L75">        assertTrue(quest.isComplete());</span>
+<span class="fc" id="L76">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span>java (Nov 12, 2026 10:50:39 PM)</div></body></html>
