@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>MoveResult.java</h1>
+
+<table class="src">
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.example.haunted.events;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class MoveResult {</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final boolean success;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final String message;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final boolean trapTriggered;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final int trapDamage;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public MoveResult(boolean success, String message, boolean trapTriggered, int trapDamage) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.success = success;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.message = message;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.trapTriggered = trapTriggered;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.trapDamage = trapDamage;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isSuccess() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_17'/>
+17
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_17'>2</a>
+<span>
+1. isSuccess : replaced boolean return with true for com/example/haunted/events/MoveResult::isSuccess &rarr; KILLED<br/>
+2. isSuccess : replaced boolean return with false for com/example/haunted/events/MoveResult::isSuccess &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return success;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String getMessage() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_21'/>
+21
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_21'>1</a>
+<span>
+1. getMessage : replaced return value with &#34;&#34; for com/example/haunted/events/MoveResult::getMessage &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return message;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isTrapTriggered() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_25'/>
+25
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_25'>2</a>
+<span>
+1. isTrapTriggered : replaced boolean return with true for com/example/haunted/events/MoveResult::isTrapTriggered &rarr; KILLED<br/>
+2. isTrapTriggered : replaced boolean return with false for com/example/haunted/events/MoveResult::isTrapTriggered &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return trapTriggered;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getTrapDamage() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_29'/>
+29
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_29'>1</a>
+<span>
+1. getTrapDamage : replaced int return with 0 for com/example/haunted/events/MoveResult::getTrapDamage &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return trapDamage;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@23551fa1_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@23551fa1_17'>17</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_17'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isSuccess<br/><b>Killed by : </b>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#2]</span></span> replaced boolean return with true for com/example/haunted/events/MoveResult::isSuccess &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isSuccess<br/><b>Killed by : </b>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#3]</span></span> replaced boolean return with false for com/example/haunted/events/MoveResult::isSuccess &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@23551fa1_21'>21</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_21'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMessage<br/><b>Killed by : </b>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#3]</span></span> replaced return value with &#34;&#34; for com/example/haunted/events/MoveResult::getMessage &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@23551fa1_25'>25</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_25'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isTrapTriggered<br/><b>Killed by : </b>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#2]</span></span> replaced boolean return with true for com/example/haunted/events/MoveResult::isTrapTriggered &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isTrapTriggered<br/><b>Killed by : </b>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#3]</span></span> replaced boolean return with false for com/example/haunted/events/MoveResult::isTrapTriggered &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@23551fa1_29'>29</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@23551fa1_29'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getTrapDamage<br/><b>Killed by : </b>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#3]</span></span> replaced int return with 0 for com/example/haunted/events/MoveResult::getTrapDamage &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#4] (0 ms)</li><li>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.events.MoveResultTest.[engine:junit-jupiter]/[class:com.example.haunted.events.MoveResultTest]/[test-template:shouldReturnAllSuppliedResultValues(boolean, java.lang.String, boolean, int)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldStayInCurrentRoomWhenExitIsMissing(com.example.haunted.model.Direction)]/[test-template-invocation:#4] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#4] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldMoveThroughEachConnectedExit(com.example.haunted.model.Direction)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[method:shouldNotMoveOrTriggerTrapInLockedRoom()] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[method:shouldMoveWithoutTriggeringDisarmedTrap()] (0 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldExposeActualPlayerQuestAndCurrentRoom()] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#4] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#3] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean)]/[test-template-invocation:#2] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldEnterAndReportTrapDamageEvenWhenLethal(int, int)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.MovementEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.MovementEngineTest]/[test-template:shouldRespectOneTimeAndRepeatingTrapsOnReentry(boolean)]/[test-template-invocation:#1] (0 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldReportGameOverAfterLethalTrap()] (0 ms)</li><li>com.example.haunted.engine.GameEngineTest.[engine:junit-jupiter]/[class:com.example.haunted.engine.GameEngineTest]/[method:shouldPickUpEquipUseUnlockAndMoveThroughPublicGameMethods()] (0 ms)</li><li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldAllowCompleteAdventureUsingOnlyPublicGameActions()] (0 ms)</li><li>com.example.haunted.config.DungeonFactoryTest.[engine:junit-jupiter]/[class:com.example.haunted.config.DungeonFactoryTest]/[method:shouldPlaceArmedOneTimeElectricTrapInElevator()] (0 ms)</li><li>com.example.haunted.MainTest.[engine:junit-jupiter]/[class:com.example.haunted.MainTest]/[method:shouldPrintStartingRoomMovementAndPickup()] (5 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.17.3
+
+</body>
+</html>
