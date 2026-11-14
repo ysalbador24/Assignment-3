@@ -96,3 +96,36 @@ The final Maven mutation-analysis run completed with **BUILD SUCCESS**. Coverage
 - Pitest XML: `haunted-university-basement/reports/pitest-final/mutations.xml`
 
 Keep each HTML report with its supporting folders and assets so its links and formatting work when opened locally.
+
+## AI Prompt Documentation
+
+We used ChatGPT to help understand the game, plan and write tests, and troubleshoot testing issues. Below are the prompts we collected for each person's part.
+
+### Lauren's prompts
+
+Areas: combat, inventory, loot, monster and boss combat, player health and healing, and potion tests.
+
+#### Test planning and implementation
+
+1. "I need to create tests for combat, player health and healing, monster and boss behavior, and loot. How should I organize these tests into classes while following the project guidelines?"
+2. "Using these parameters, help me implement test methods that follow our project guidelines and the topics we have discussed."
+3. "Here is what I currently have for CombatTest. Does it align with the project guidelines and the topics we have discussed?"
+
+#### JUnit testing and debugging
+
+4. "I have implemented the test classes as discussed and ran `mvn clean test`, but the build reports that zero tests were run and no test classes were identified. Could my `pom.xml` be configured incorrectly?"
+5. "I now need to create tests for inventory limits, picking up and using items, and potions. These tests will expand our existing coverage and should help improve our mutation kill rate by testing more methods."
+
+#### PIT mutation testing
+
+6. "I need to configure PIT for PlayerHealthTest and MonsterCombatTest, then review the mutation report to identify surviving mutations and determine which tests could improve the mutation kill rate."
+7. "PIT ran all of the tests instead of only the test classes I was targeting, and it did not generate the reports. Can you review my `pom.xml` and help me identify why?"
+
+### Yesenia's prompts
+
+Areas: dungeon setup, movement, room connections, traps, quests, equipment and unlocking, win/loss conditions, integration tests, and the combined reports.
+
+1. "Here are the classes in the `model` and `config` packages: Player, Room, Monster, BossMonster, Item, Weapon, Armor, Potion, Key, QuestItem, Inventory, Quest, Trap, and DungeonFactory. Explain each class and how they relate to each other."
+2. "Walk through the dungeon factory in the `config` package and show me how to set up a small game world in a JUnit `@BeforeEach`."
+3. "Write JUnit 5 tests for moving between rooms: a valid exit, no exit, and a locked room with and without the key."
+4. "Write tests for quest progression and the win condition: Lost Gradebook recovered and Final Exam Phantom defeated, plus the cases where only one is true."
